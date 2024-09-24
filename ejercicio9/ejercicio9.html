@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 9</title>
+</head>
+<body>
+    <!-- Crea un script que pida al usuario un numero entero positivo N mayor a 2.
+    Hay que controlar que el numero introducido sea correcto. Si no es así se volverá a
+    pedir.
+    A continuación debe crearse una matriz NxN rellena con los resultados de la tabla de
+    multiplicar de N (empezando en 1). Finalmente, muestra por consola la matriz “en
+    forma de matriz”
+    Ej: Para el número 3, el programa debe mostrar
+    1 2 3
+    4 5 6
+    7 8 9 -->
+    <script>
+        let numero = 0;
+        do{
+            numero = (parseInt(prompt("Ingrese un número entero mayor a 2: ")));
+            if (numero < 2 || isNaN(numero))
+                alert("Número introducido INCORRECTO");
+        }while(numero < 2|| isNaN(numero));
+
+        let matriz = [
+            []
+        ];
+        
+        for(let i = 0; i < numero; i++){
+            for(let j = 0; j < numero; j++){
+                matriz[[i,j]] = (i+1) * numero;
+            }
+        }
+        console.log(matriz);
+    </script>
+</body>
+</html>

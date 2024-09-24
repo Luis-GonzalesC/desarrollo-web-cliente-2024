@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 5</title>
+</head>
+<body>
+    <script>
+        let numero1 = (parseInt(prompt("Ingrese el primer número: ")));
+        let numero2 = (parseInt(prompt("Ingrese el segundo número: ")));
+        //Realizando las operaciones
+        let suma = numero1 + numero2;
+        let resta = numero1 - numero2;
+        let multi = numero1 * numero2;
+        let resto = numero1 % numero2;
+        let division;
+        if(numero2 < 0) division = 0;
+        else division = numero1 / numero2;
+        alert(`La suma de los numeros ${numero1} y ${numero2} es:
+                Suma: ${suma}
+                Resta: ${resta}
+                Multiplicacion: ${multi}
+                Division: ${division}
+                Resto: ${resto}`);
+    </script>
+</body>
+</html>
