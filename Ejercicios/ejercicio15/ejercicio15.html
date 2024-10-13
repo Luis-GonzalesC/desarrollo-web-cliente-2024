@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="code.js"></script>
+    <title>Ejercicio 15</title>    
+</head>
+<body>
+    <!-- Usando el array de colores del ejercicio anterior, crea un script que
+    solicite 8 palabras al usuario y las almacene en otro array.
+    Ordena ese array (el del usuario) de forma que si aparecen colores del array de colores,
+    estos queden al principio del array y el resto de palabras al final. Muestralo por consola. -->
+</body>
+    <script>
+        let i = 0;
+        let array = [];
+        while(i < 8){
+            array[i] = prompt(`Ingrese 8 palabras ${i+1}-8`);
+            i++;
+        }
+        alert(ej15(array));
+    </script>
+</html>

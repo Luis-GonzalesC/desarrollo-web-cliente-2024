@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="code.js"></script>
+    <title>Ejercicio 14</title>
+</head>
+<body>
+    <script>
+        let num_franjas = null;
+        let franja_colores = [];
+        do{
+            num_franjas = (parseInt(prompt("Ingrese un número de franjas a tener la bandera (entre 1 y 5)")))
+            if (isNaN(num_franjas) || (num_franjas < 1 || num_franjas > 5))
+                alert("INCORRECTO");
+        }while(isNaN(num_franjas) || (num_franjas < 1 || num_franjas > 5));
+
+        franja_colores = generador_banderas(num_franjas)
+        alert(franja_colores);
+        crearTabla(franja_colores);
+    </script>
+</body>
+</html>

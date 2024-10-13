@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 6</title>
+</head>
+<body>
+<!-- Crea un script que pida al usuario un numero entero positivo N mayor a 0.
+Hay que controlar que el numero introducido sea correcto. Si no es así se volverá a
+pedir.
+A continuación debe realizar lo siguiente:
+a) Calcular los divisores del numero N y mostrarlos.
+b) Calcular la suma de los cuadrados de los divisores obtenidos en el paso anterior
+y mostrarla.
+c) Indicar si esa suma es un cuadrado o no (con una frase por pantalla) -->
+    <script>
+        var numero = 0, suma = 0, cuadrado = 0;
+        do{
+            numero = (parseInt(prompt("Ingrese un número entero positivo N mayor a 0")));
+            if (numero < 0 || isNaN(numero))
+                alert("Número introducido INCORRECTO");
+        }while(numero < 0 || isNaN(numero));
+
+        for(let i = 0; i <= numero; i++){
+            if((numero % i) == 0){
+                cuadrado = i * i;
+                suma += cuadrado;
+                console.log(i);
+            }
+        }
+        console.log("La suma de todos los cuadrados es "+ suma);
+
+        //ME FALTA LA C
+    </script>
+</body>
+</html>

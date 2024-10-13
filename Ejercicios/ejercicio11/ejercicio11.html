@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 11</title>
+</head>
+<body>
+    <!-- El ácido desoxirribonucleico, ADN, es la principal molécula de
+    almacenamiento de información en los sistemas biológicos. Está compuesto por cuatro
+    bases de ácido nucleico: guanina ("G"), citosina ("C"), adenina ("A") y timina ("T").
+    El ácido ribonucleico, ARN, es la principal molécula mensajera de las células. El ARN
+    difiere ligeramente del ADN en su estructura química y no contiene timina. En el ARN,
+    la timina se sustituye por otro ácido nucleico, el uracilo ('U').
+    Cree una función que traduzca una cadena dada de ADN a ARN.
+    Por ejemplo:
+    Si se introduce la cadena GCAT, a salida debe ser GCAU
+    Si se introduce la cadena GCATCGTA, a salida debe ser GCAUCGUA
+    La cadena de entrada puede tener una longitud arbitraria, incluso puede estar vacía. Se
+    garantiza que toda cadena de entrada es válida, es decir, que cada cadena de entrada
+    sólo estará formada por 'G', 'C', 'A' y/o 'T' en cualquier orden. -->
+    <script>
+        let cadena = null;
+        cadena = (prompt("Ingrese una cadena de entrada sólo estará formada por 'G', 'C', 'A' y/o 'T' en cualquier orden"));
+
+        cadena = cadena.replaceAll("T", "U");
+        alert(cadena);
+    </script>
+</body>
+</html>

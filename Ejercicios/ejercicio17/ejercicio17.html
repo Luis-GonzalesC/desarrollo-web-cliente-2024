@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="code.js"></script>
+    <title>Ejercicio 17</title>
+</head>
+<body>
+    <script>
+        let array = almacenarArray();
+        mostrarArray(array);
+
+        //BUCLE PARA PEDIR LOS VALORES DE LAS POSICIONES Y COMPROBAR SI SON CORRECTOS
+        let inicial = 0, final = 0;
+        do{
+            //PARA LA POS INICIAL
+            do{
+                inicial = (parseInt(prompt("Ingrese una pos inicial")));
+                if (inicial < 0 || inicial > 9 || isNaN(inicial)) alert("Número introducido INCORRECTO");
+            }while(inicial < 0 || inicial > 9 || isNaN(inicial));
+            //PARA LA POS FINAL
+            do{
+                final = (parseInt(prompt("Ingrese una pos FINAL")));
+                if (final < 0 || final > 9 || isNaN(final)) alert("Número introducido INCORRECTO");
+            }while(final < 0 || final > 9 || isNaN(final));
+
+            if (inicial >= final) alert("La posición inicial debe ser menor que la posición final. INCORRECTO");
+
+        }while(inicial >= final);
+
+        rotarValores(array, inicial, final);
+        mostrarArray(array);
+    </script>
+</body>
+</html>
