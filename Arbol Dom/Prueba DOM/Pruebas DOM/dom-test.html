@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="dom-test.css" />
+    <script src="pruebas.js"></script>
+    <title>Pruebas DOM</title>
+    
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="#" class="Emenu"> Inicio </a></li>
+        <li><a href="#" class="Emenu"> Nosotros </a></li>
+        <li><a href="#" class="Emenu"> Proyectos </a></li>
+        <li><a href="#" class="Emenu"> Productos </a></li>
+        <li><a href="#" class="Emenu"> Contacto </a></li>
+      </ul>
+    </nav>
+    <form action="">
+      <span>Nombre <input type="text" name="especial" onclick="cambia()"/></span>
+      <span>Clave <input type="password" name="bola" /></span>
+    </form>
+    <div id="pepe">
+      <p name="trozo" id="texto">
+        En esta noche tan fría, yo te ofrezco mi estufa.<br />
+        no tiene pilas ni cables pero igualmente se enchufa.
+      </p>
+      <a href="#" id="yo"> Pulsa aquí </a>
+    </div>
+
+    <div id="bombom" onclick="bomba()">
+      <p align="center">primero</p>
+      <p>segundo     no     es     primero</p>
+      <p>Warning: Este elemento contiene <code>codigo</code> y <strong>lenguaje fuerte</strong>.</p>
+      <p>Yo no debo salir</p>
+    </div>
+
+    <table width="200px" height="300px" border="1px" align="center" onclick="prueba()">
+      <tr>
+        <td>A</td>
+        <td>B</td>
+      </tr>
+      <tr>
+        <td>C</td>
+        <td>D</td>
+      </tr>
+      <tr>
+        <td>E</td>
+        <td>F</td>
+      </tr>
+    </table>
+
+
+  </body>
+</html>

@@ -1,0 +1,61 @@
+ul{
+    display: flex;
+    justify-content: space-between;
+}
+
+nav a{
+    text-decoration:none;
+    color:inherit;
+    font-size:14px;
+} 
+nav li{
+    display:inline-block;
+    width:20%;
+    padding:5px 10px;
+    background-color:#000;
+    border:1px solid #000;
+    text-align:center;
+    color:#fff;
+    margin: 0 .25em;
+}
+nav li:hover{
+    background-color:#fff;
+    color:#000;
+}
+
+form{
+    margin: 0 auto;
+    width: 10%;
+    border: 1px solid black;
+    padding: 1%;
+}
+
+form span{
+    display: block;
+    margin: 1.25em 0;;
+}
+
+#pepe p{
+    background-color: lightgreen;
+    width: 500px;
+    margin: 0 auto;
+    padding: 2rem;
+    font-size: 1.4em;
+    text-align: center;
+}
+
+#pepe a{
+    display: block;
+    width: 150px;
+    margin: 0 auto;
+    font-size: 2em;
+    margin-bottom: 2em;;
+}
+
+
+#bombom p:nth-child(2n+1){
+    background-color: #DDD;
+}
+#bombom p:nth-child(4){
+    display: none;
+}

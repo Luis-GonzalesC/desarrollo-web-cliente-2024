@@ -1,0 +1,15 @@
+.uno {
+    background-color: bisque;
+    width: 500px;
+    height: 500px;
+    font-size: 80px;
+    color: aqua;
+}
+
+.dos {
+    background-color: blue;
+    width: 100px;
+    height: 100px;
+    font-size: 20px;
+    color: white;
+}
