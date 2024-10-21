@@ -2,7 +2,7 @@ window.onload = () =>{
     let dedos = document.getElementsByTagName("input");
     for (elemento of dedos) {
         elemento.onclick = function(){
-            document,document.bgColor = this.getAttribute("value");
+            document.bgColor = this.getAttribute("value");
         }
     }
 }
