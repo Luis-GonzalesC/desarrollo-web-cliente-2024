@@ -1,3 +1,13 @@
+window.onload = () =>{
+    let dedos = document.getElementsByTagName("input");
+    for (elemento of dedos) {
+        elemento.onclick = function(){
+            document,document.bgColor = this.getAttribute("value");
+        }
+    }
+}
+
+/*
 function boton1(){
     let boton = document.getElementsByTagName("input")[0];
     document.bgColor = boton.getAttribute("value");
@@ -22,4 +32,4 @@ function boton4(){
 function boton5(){
     let boton = document.getElementsByTagName("input")[4];
     document.bgColor = boton.getAttribute("value");
-}
+}*/
