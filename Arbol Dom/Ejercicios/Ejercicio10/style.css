@@ -1,4 +1,4 @@
-#id1 {
+/*#id1 {
     background-color: rgb(127, 255, 212); 
     width: 100px; 
     height: 100px;
@@ -14,4 +14,19 @@
     background-color: rgb(255, 214, 252); 
     width: 100px; 
     height: 100px;
+}*/
+
+div{
+    width: 100px;
+    height: 100px;
+}
+
+div:first-child{
+    background-color: red;
+}
+div:nth-child(2){
+    background-color: yellow;
+}
+div:nth-child(3){
+    background-color: blue;
 }

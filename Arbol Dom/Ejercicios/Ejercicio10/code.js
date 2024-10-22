@@ -5,10 +5,11 @@ window.onload = () =>{
 
     for (element of div) {
         element.onmouseover = function(){
+            
             let estilos = window.getComputedStyle(this);
             let fondo = estilos.getPropertyValue('background-color');
-            document.body.style.backgroundColor = fondo;
-            console.log(fondo);
+            //document.body.style.backgroundColor = fondo;
+            document.body.style.setProperty("background-color",fondo);
             
         }
         element.onmouseout = function(){
