@@ -10,8 +10,10 @@ function moverDerecha(){
     let boton = document.getElementsByTagName("input")[0];
 
     boton.onclick = function(){
-        divisito.style.left = (5*i) + "px";
-        i++;
+        if((5*i) <= (screen.width - divisito.offsetWidth)){
+            divisito.style.left = (5*i) + "px";
+            i++;
+        }
     }
 }
 
@@ -20,7 +22,9 @@ function moverIzquieda(){
     let boton = document.getElementsByTagName("input")[1];
 
     boton.onclick = function(){
-        divisito.style.left = (parseInt(divisito.style.left) - 5) + "px";
-        i--;
+        if(i > 1){
+            divisito.style.left = (parseInt(divisito.style.left) - 5) + "px";
+            i--;
+        }
     }
 }
