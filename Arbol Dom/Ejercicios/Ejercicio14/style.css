@@ -1,0 +1,7 @@
+ul{
+    list-style: none;
+}
+
+.item__submenu{
+    display: none;
+}
