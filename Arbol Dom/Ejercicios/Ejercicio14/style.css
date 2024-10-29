@@ -1,7 +1,23 @@
 ul{
     list-style: none;
+    padding: 0;
+    margin:0;
+}
+li{
+   
 }
 
+.body__list{
+    width: 300px;
+    border-bottom: 1px solid black;
+    background-color: cadetblue;
+    
+}
+.body__list li{
+    border-top: 1px solid black;
+}
 .item__submenu{
+    font-size: .75em;
+    background-color: aqua;
     display: none;
 }
