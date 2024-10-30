@@ -1,5 +1,5 @@
-let timer1, timer2, timer3, timer4, timer5;
-let timer = [timer1, timer2, timer3, timer4, timer5];
+//let timer1, timer2, timer3, timer4, timer5;
+let timer = [0, 0, 0, 0, 0];
 
 window.onload = () => {
     let salto = 150;
@@ -20,16 +20,20 @@ window.onload = () => {
     
     boton1.onclick = function(){
         count = 0;
+        boton2.disabled = false;
         for (let div of divisito) {
-            resetear(div, boton2, count);
+            resetear(div, count);
+            
+            console.log(div.clientWidth);
             count++;
         }
     }
+
+    
 }
 
-function resetear(divisito, boton2, contador){
+function resetear(divisito, contador){
     divisito.style.left = 0;
-    boton2.disabled = false;
     i = 1;
     clearInterval(timer[contador]);
 }
@@ -39,11 +43,15 @@ function mover(div, salto, tiempo, i){
     let random = Math.floor(Math.random()*(1500 - 250) + 250);
     i = 1;
     timer[tiempo] = setInterval(() => {
-        if ((salto* i) <= (screen.width)) {
+        
+        if ((salto* i) >= (screen.width - 200)){ //200 porque evito el scrooll
+            for(let timers of timer){
+                clearInterval(timers);
+            }
+            alert("El ganador es: " + div.dataset.nombre);
+        }else{
             div.style.left = (salto * i) + "px";
             i++;
-        }else{
-            alert("ganaste wey");
         }
     }, random);
 }
