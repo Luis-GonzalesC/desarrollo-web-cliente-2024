@@ -2,7 +2,7 @@
 let timer = [0, 0, 0, 0, 0];
 
 window.onload = () => {
-    let salto = 150;
+    let salto = 30;
     let i = 1;
     let divisito = document.getElementsByTagName("div");
     let boton1 = document.getElementsByTagName("input")[0];
@@ -23,8 +23,6 @@ window.onload = () => {
         boton2.disabled = false;
         for (let div of divisito) {
             resetear(div, count);
-            
-            console.log(div.clientWidth);
             count++;
         }
     }
@@ -39,12 +37,14 @@ function resetear(divisito, contador){
 }
 
 function mover(div, salto, tiempo, i){
-    //Math.random() * (max - min) ) + min; 
-    let random = Math.floor(Math.random()*(1500 - 250) + 250);
+    const maximo = 120;
+    const minimo = 10;
+    //Math.random() * (max - min) + 1 ) + min; 
+    let random = Math.floor(Math.random()*(maximo - minimo + 1) + minimo);
     i = 1;
     timer[tiempo] = setInterval(() => {
         
-        if ((salto* i) >= (screen.width - 200)){ //200 porque evito el scrooll
+        if ((salto* i) >= (screen.width /*- 200*/)){ //200 porque evito el scrooll
             for(let timers of timer){
                 clearInterval(timers);
             }
