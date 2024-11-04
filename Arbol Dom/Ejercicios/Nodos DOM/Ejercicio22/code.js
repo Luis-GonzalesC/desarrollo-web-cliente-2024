@@ -3,7 +3,7 @@ window.onload = () =>{
     const ancho = imagen.width;
     const alto = imagen.height;
 
-    let fondo = document.createElement("fondo");
+    let fondo = document.createElement("div");
     let i = 0;
 
     //div para el fondo
@@ -18,7 +18,7 @@ window.onload = () =>{
         right: 0;`);
 
     //fondo creado para poner la imagen dentro y poder centrarlo
-    let conten_img = document.createElement("fondo");
+    let conten_img = document.createElement("div");
     //Sin width => porque al hacer control + scrool no se queda en el centro
     conten_img.setAttribute("style", `
         display: flex;
@@ -41,7 +41,7 @@ window.onload = () =>{
             
             //Nota: Primero se agrega el fondo porque no se ve
             padre.appendChild(fondo);//Meto el fondo al padre
-            padre.appendChild(conten_img);////meto el fondo-con la imagen en el padre
+            padre.appendChild(conten_img);////meto el div-con la imagen en el padre
         }
 
     }
