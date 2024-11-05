@@ -36,22 +36,23 @@ window.onload = () =>{
             
                 let padre = imagenes[i].parentNode;//saco el body
 
-                div_img.appendChild(imagenes[i]);
+                div_img.appendChild(imagenes[i]);//Agrego la imagen al div
 
-                padre.appendChild(div_img);
-                padre.appendChild(fondo);
+                padre.appendChild(div_img);//Agrego el div al body
+                padre.appendChild(fondo);//Agrego el fondo al body
                 tocado = false;
             }
         }
         
         fondo.onclick = function(){
             let padre = fondo.parentNode;
+            //Creo una imagen nueva
             let imagen_nueva = document.createElement("img");
             imagen_nueva.src = imagenes[i].getAttribute("src");
             
-            div_img.removeChild(imagenes[i]);
-            padre.removeChild(div_img);
-            padre.removeChild(fondo);
+            div_img.removeChild(imagenes[i]);//Elimino la imagen
+            padre.removeChild(div_img);//Borro el div del padre
+            padre.removeChild(fondo);//Borro el fondo
 
             imagen_nueva.setAttribute("style", `
                 width: ${ancho}px;

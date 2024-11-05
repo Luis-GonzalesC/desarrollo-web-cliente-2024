@@ -38,13 +38,20 @@ window.onload = () =>{ //espera que se carge todo el contenido de la pagina, ima
     boton3.onclick = borrar;
 
     function borrar(){
-        let papi = document.querySelector("section");
-        let victimas = document.querySelectorAll("div");
+        let papi = document.querySelector("section"); 
+        //let victimas = papi.children;
+        //let victimas = document.querySelectorAll("div");//con esto me devuelve una lista y al borrar las posiciones se reajustan
+
+        while(papi.firstChild){//Mientras papi tenga hijos
+            papi.removeChild(papi.firstChild);//matalos a todos
+        } // => pasa que esto se va a cargar todo lo que tenga
+
+        /*
         for (let elemento of victimas) {
             
             let papi = elemento.parentNode;
             papi.removeChild(elemento);
-        }
+        }*/
 
         /*
         //Si se quien es el padre pero no se quien es el hijo
