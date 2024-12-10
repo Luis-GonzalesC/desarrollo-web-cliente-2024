@@ -5,12 +5,13 @@ window.onload = () =>{
     let texa= document.forms[0];
 
 
-    boton.onclick = function(){
-        let i = 0;
-        for(let e of formu){
-            if(e.checked) texa[4].value += span[i].textContent + "\n";
-            i++;
-        }
-    }
-    
+    boton.addEventListener("click", 
+        function(){
+            let i = 0;
+            for(let e of formu){
+                if(e.checked) texa[4].value += span[i].textContent + "\n";
+                i++;
+            }
+        }, false);
+    //FALTA EL APARTADO B
 }
