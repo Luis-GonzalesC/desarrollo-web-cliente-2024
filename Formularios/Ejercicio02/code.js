@@ -1,8 +1,7 @@
 window.onload = () =>{
     let formu = document.querySelector("form");
-    //FALTA TERMINAR
-    formu[0].onkeydown = () =>{
-    
-        formu[1].value += formu[0].value;//Value para coger el valor del texto
-    }
+    formu[0].addEventListener('keydown', (ev) => {
+        const NOTECLAS = ["Enter", "Backspace", "CapsLock", "Tab", "Escape", "ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight", "NumLock", "Delete","End", "PageDown", "Insert", "Shift", "Alt", "Control", "Meta", "AltGraph", "Dead"];
+        if(!NOTECLAS.includes(ev.key)) formu[1].value += ev.key;
+    });
 }

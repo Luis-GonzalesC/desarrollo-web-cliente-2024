@@ -9,45 +9,65 @@ window.onload = () => {
         array.push(input);
     }
 
+    array[0].disabled = true;
+    array[1].disabled = true;
+
     formu.moneda.addEventListener("click",
         function(){
             switch(formu.moneda.selectedIndex){
                 case 1:
+                    array[0].disabled = false;
                     array[1].disabled = true;
-                    /*let numero = parseFloat(array[0].value);
-                    if(isNaN(numero)) alert("Ingrese un número");
-                    else if (numero <= 0) alert("Ingrese número positivo");
-                    else array[1].value = numero * EURO;
-                    array[0].value = ""*/
                     break;
                 case 2:
                     array[0].disabled = true;
                     array[1].disabled = false;
                     break;
             }
+            array[0].value = ""
+            array[1].value = ""
         }
         , false);
     
     array[2].addEventListener("click", 
         function(){
             switch(formu.moneda.selectedIndex){
+                case 0:
+                    alert("Selecciona un convertidor de moneda");
+                    break;
                 case 1:
                     let numero1 = parseFloat(array[0].value);
-                    if(isNaN(numero1)) alert("Ingrese un número");
-                    else if (numero1 <= 0) alert("Ingrese número positivo");
-                    else array[1].value = numero1 * EURO;
-                    array[0].value = ""
+                    if(comprobarMoneda(numero1)){
+                        array[1].value = numero1 * EURO;
+                        array[0].value = ""
+                    }else{
+                        array[0].value = ""
+                        array[1].value = ""
+                    }
                     break;
                 case 2:
                     let numero2 = parseFloat(array[1].value);
-                    if(isNaN(numero2)) alert("Ingrese un número");
-                    else if (numero2 <= 0) alert("Ingrese número positivo");
-                    else array[0].value = numero2 / EURO;
-                    array[0].value = ""
+                    if(comprobarMoneda(numero2)){
+                        array[0].value = (numero2 / EURO);
+                        array[1].value = ""
+                    }else{
+                        array[0].value = ""
+                        array[1].value = ""
+                    }
                     break;
             }
         }
         , false);
-    
-    
+
+    function comprobarMoneda(numero){
+        if (isNaN(numero)) {
+            alert("Ingrese un número");
+            return false;
+        }
+        else if (numero <= 0) {
+            alert("Ingrese un número positivo");
+            return false;
+        }
+        return true;
+    }
 }
