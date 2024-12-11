@@ -24,8 +24,7 @@ window.onload = () => {
                     array[1].disabled = false;
                     break;
             }
-            array[0].value = ""
-            array[1].value = ""
+            vaciarContenido();
         }
         , false);
     
@@ -40,20 +39,15 @@ window.onload = () => {
                     if(comprobarMoneda(numero1)){
                         array[1].value = numero1 * EURO;
                         array[0].value = ""
-                    }else{
-                        array[0].value = ""
-                        array[1].value = ""
-                    }
+                    } else vaciarContenido();
+
                     break;
                 case 2:
                     let numero2 = parseFloat(array[1].value);
                     if(comprobarMoneda(numero2)){
                         array[0].value = (numero2 / EURO);
                         array[1].value = ""
-                    }else{
-                        array[0].value = ""
-                        array[1].value = ""
-                    }
+                    } else vaciarContenido();
                     break;
             }
         }
@@ -69,5 +63,10 @@ window.onload = () => {
             return false;
         }
         return true;
+    }
+
+    function vaciarContenido(){
+        array[0].value = ""
+        array[1].value = ""
     }
 }

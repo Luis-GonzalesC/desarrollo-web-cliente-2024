@@ -13,10 +13,11 @@ window.onload = () =>{
     });*/
 
     //Apartado B
-    formulario.colores.forEach((color) => {//Accediendo a cada elemento del html
+    formulario.colores.options.forEach((color) => {//Accediendo a cada elemento del html
         color.addEventListener("click", 
             () =>{
-                if(color.checked) divi.setAttribute("style", `background-color:${color.value}`);
+                if(color.checked) console.log("a");
+                //divi.setAttribute("style", `background-color:${color.value}`);
             }
             , false)
     });
