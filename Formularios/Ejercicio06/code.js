@@ -7,7 +7,7 @@ window.onload = () =>{
         let checkbox = inputs[i];
         checkbox.addEventListener("click", 
             function () {
-                let texto_opciones = span[i].textContent; // Obtenemos el texto asociado al checkbox
+                let texto_opciones = span[i].textContent; //Saco el texto del checkbox
                 if (checkbox.checked) { //Marcado
                     let opcion = document.createElement("option");//Creo la opción
                     opcion.appendChild(document.createTextNode(texto_opciones)); //Añado el texto a la opción
@@ -17,7 +17,7 @@ window.onload = () =>{
                     while (j < formu.pais.options.length){
                         if (formu.pais.options[j].textContent === texto_opciones) { //Si la desmarcada es igual al texto correspondiende la elimino
                             formu.pais.removeChild(formu.pais.options[j]);
-                            j = formu.pais.options.length;
+                            j = formu.pais.options.length; //Corto bucle
                         }
                         j++;
                     }
