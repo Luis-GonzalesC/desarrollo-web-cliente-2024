@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos ADV</title>
+
+    <style>
+        section{
+            margin: 0 auto;
+            width: 25%;
+            height: 300px;
+            padding: 2%;
+            background-color:darkgreen;
+        }
+
+        div{
+            margin: 0 auto;
+            width: 75%;
+            height: 200px;
+            padding: 2%;
+            background-color: darkkhaki;
+        }
+
+        p{
+            margin: 0 auto;
+            width: 75%;
+            height: 100px;;
+            padding: 2%;
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+
+    <section>   
+        <div>
+            <p>
+                haz click aqui
+            </p>
+        </div>
+    </section>
+
+    <input type="button" value="QUITAR">
+    <script>
+        let abuelo = document.querySelector("section");
+        let padre = document.querySelector("div");
+        let hijo = document.querySelector("p");
+
+        /*abuelo.onclick = function(){
+            alert("abuelo");
+        }
+        padre.onclick = function(){
+            alert("padre");
+        }
+        hijo.onclick = function(){
+            alert("hijo");
+        }*/
+
+        /*abuelo.addEventListener("click", 
+            ()=>{
+                alert("abuelo SECTION")
+            }
+            , false);
+
+        padre.addEventListener("click", 
+            ()=>{
+                alert("padre DIV")
+            }
+        , true);*/
+
+        hijo.addEventListener("click", borrar);
+
+        function borrar(){
+            alert("Soy el primero")
+        }
+
+        let boton = document.querySelector("input[type='button']");
+
+        boton.onclick = function(){
+            alert("BORRANDO EL EVENTO HIJO");
+            hijo.removeEventListener("click", borrar);
+        }
+
+        
+
+    </script>
+    
+</body>
+</html>
