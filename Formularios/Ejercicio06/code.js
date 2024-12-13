@@ -6,7 +6,7 @@ window.onload = () =>{
     for (let i = 0; i < inputs.length; i++) {
         let checkbox = inputs[i];
         checkbox.addEventListener("click", 
-            function () {
+            () => {
                 let texto_opciones = span[i].textContent; //Saco el texto del checkbox
                 if (checkbox.checked) { //Marcado
                     let opcion = document.createElement("option");//Creo la opción

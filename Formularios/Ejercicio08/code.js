@@ -2,7 +2,7 @@ window.onload = () =>{
     let formulario = document.getElementsByTagName("form")[0];
     let divi = document.getElementsByClassName("div")[0];
 
-    //Apartado A
+    //Apartado A => radio button
     /*
     formulario.colores.forEach((color) => {//Accediendo a cada elemento del html
         color.addEventListener("click", 
@@ -13,11 +13,10 @@ window.onload = () =>{
     });*/
 
     //Apartado B
-    formulario.colores.options.forEach((color) => {//Accediendo a cada elemento del html
+    Array.from(formulario.colores.options).forEach((color) => {//Accediendo a cada elemento del html
         color.addEventListener("click", 
             () =>{
-                if(color.checked) console.log("a");
-                //divi.setAttribute("style", `background-color:${color.value}`);
+                divi.setAttribute("style", `background-color:${color.value}`);
             }
             , false)
     });

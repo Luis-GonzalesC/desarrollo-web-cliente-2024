@@ -18,13 +18,13 @@ window.onload = () =>{
     //APARTADO B
     for (let checkbox of inputs) {
         checkbox.addEventListener("click", 
-            function () {
+            () => {
                 let i = 0;
                 texa[4].value = ''; // Para evitar que se acumulen, tambien me borra el contenido
                 for (let bof of inputs) {
                     if (bof.checked) texa[4].value += span[i].textContent + "\n"; // Actualizar texto
                     i++;
                 }
-        }, false);
+            }, false);
     }
 }
