@@ -15,7 +15,7 @@ window.onload = () =>{
                 }else{ //No Marcado
                     let j = 0;
                     while (j < formu.pais.options.length){
-                        if (formu.pais.options[j].textContent === texto_opciones) { //Si la desmarcada es igual al texto correspondiende la elimino
+                        if (formu.pais.options[j].value === texto_opciones) { //Si la desmarcada es igual al texto correspondiende la elimino
                             formu.pais.removeChild(formu.pais.options[j]);
                             j = formu.pais.options.length; //Corto bucle
                         }

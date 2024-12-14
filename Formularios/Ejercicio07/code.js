@@ -9,8 +9,6 @@ window.onload = () =>{
                 let divisito = document.createElement("div");//Creo el div
                 divisito.appendChild(document.createTextNode(textoArea)); //Agrego el texto al div
                 formulario.parentNode.appendChild(divisito);
-            } else{
-                alert("Ingrese un texto");
-            }
+            } else alert("Ingrese un texto");
         } , false);
 }

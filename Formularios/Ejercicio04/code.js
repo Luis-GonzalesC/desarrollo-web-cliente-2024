@@ -3,7 +3,12 @@ window.onload = () => {
 
     let formu = document.getElementsByTagName("form")[0];
     let inputs = document.querySelectorAll("input");
-    let array = [];
+    let array = []; //Donde almacenaré todos mi inputs
+    /** 
+     * 0 => dolares
+     * 1 => euros
+     * 2 => boton
+    */
      
     for(let input of inputs){
         array.push(input);
@@ -12,16 +17,17 @@ window.onload = () => {
     array[0].disabled = true;
     array[1].disabled = true;
 
+    //Dependiendo de la lista de monedas que seleccione habilito un input u otro
     formu.moneda.addEventListener("click",
-        function(){
+        () => {
             switch(formu.moneda.selectedIndex){
                 case 1:
-                    array[0].disabled = false;
-                    array[1].disabled = true;
+                    array[0].disabled = false;//Desactivo dolares
+                    array[1].disabled = true;//Activo Euros
                     break;
                 case 2:
-                    array[0].disabled = true;
-                    array[1].disabled = false;
+                    array[0].disabled = true;//Activo dolares
+                    array[1].disabled = false;//Desactivo euros
                     break;
             }
             vaciarContenido();
@@ -34,7 +40,7 @@ window.onload = () => {
                 case 0:
                     alert("Selecciona un convertidor de moneda");
                     break;
-                case 1:
+                case 1: //Dolares a Euros
                     let numero1 = parseFloat(array[0].value);
                     if(comprobarMoneda(numero1)){
                         array[1].value = numero1 * EURO;
@@ -42,7 +48,7 @@ window.onload = () => {
                     } else vaciarContenido();
 
                     break;
-                case 2:
+                case 2: //Euros a Dolares
                     let numero2 = parseFloat(array[1].value);
                     if(comprobarMoneda(numero2)){
                         array[0].value = (numero2 / EURO);
