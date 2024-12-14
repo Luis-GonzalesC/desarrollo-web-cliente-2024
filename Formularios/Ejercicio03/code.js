@@ -2,29 +2,33 @@ window.onload = () =>{
     let boton = document.querySelector("input[type='button']"); //Tomando el boton del formulario
     let span = document.getElementsByTagName("span"); ///Cogiendo el texto de cada etiqueta
     let inputs = document.querySelectorAll("input[type='checkbox']"); //Tomando todos los checkbox
-    let texa= document.forms[0];
-
+    let texa= document.forms[0].elements["content"];
     //APARTADO A
-    /*boton.addEventListener("click", 
-        function(){
-            let i = 0;
-            texa[4].value = ''; // Para evitar que se acumulen, tambien me borra el contenido
-            for(let e of inputs){
-                if(e.checked) texa[4].value += span[i].textContent + "\n";
-                i++;
+    /*boton.addEventListener("click",
+        function(ev){
+            ev.defaultPrevented();
+            for (let i = 0; i < inputs.length; i++) {
+                if(inputs[i].checked) {
+                    texa.value += span[i].textContent + "\n"; 
+                }
             }
         }, false);*/
 
     //APARTADO B
-    for (let checkbox of inputs) {
+    
+    let i = 0;
+    while (i < inputs.length){
+        let checkbox = inputs[i];
         checkbox.addEventListener("click", 
             () => {
-                let i = 0;
-                texa[4].value = ''; // Para evitar que se acumulen, tambien me borra el contenido
-                for (let bof of inputs) {
-                    if (bof.checked) texa[4].value += span[i].textContent + "\n"; // Actualizar texto
-                    i++;
-                }
-            }, false);
+                console.log(span);
+                console.log(span[i].textContent);
+                
+                /*
+                if(checkbox.checked) texa.value += span[i].textContent + "\n";
+                else texa.value = texa.value.replace(span[i].textContent + "\n", "");
+                //i = inputs.length;*/
+        }, false);
+        i++;
     }
 }

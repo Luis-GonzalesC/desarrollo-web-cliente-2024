@@ -8,7 +8,7 @@ window.onload = () => {
     for(let input of inputs){
         array.push(input);
     }
-
+    //Por defecto estarán desactivados ambas casillas
     array[0].disabled = true;
     array[1].disabled = true;
 
@@ -53,6 +53,7 @@ window.onload = () => {
         }
         , false);
 
+    //Funcion para comprobar que sea un número correcto que me ingresa el uusario
     function comprobarMoneda(numero){
         if (isNaN(numero)) {
             alert("Ingrese un número");
