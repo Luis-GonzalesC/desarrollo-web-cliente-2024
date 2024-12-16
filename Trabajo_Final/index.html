@@ -5,22 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trabajo Final</title>
     <script src="Js/code.js"></script>
-    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="Css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 <body>
-    <p>Monedas: <span id="contadorMonedas">0</span></p>
-    <input type="button" value="Stand">
-    <div class="container_edificio">
-        <input type="button" value="Edificios">
-        <select name="edificios">
-            <option value="almacen">El Santuario de los Stand</option>
-            <option value="cabaña">Casa del usuario del Stand</option>
-            <option value="granja">La Granja de la Fuerza</option>
-            <option value="mercado">Mercado de las Sombras</option>
-            <option value="establos">Los Establos de Hold Horse</option>
-            <option value="molino">El Molino de la Fuerza</option>
-            <option value="taberna">El Salón de los Stand</option>
-        </select>
+    <div class="container">
+        <div class="container__monedas">
+            <p>Monedas:</p>
+            <span id="contadorMonedas">0</span>
+            <img id="img_moneda" src="Img/moneda.png" alt="Moneda">
+        </div>
+
+        <input class="botones" type="button" value="Stand">
+        <input class="container__edificio botones" type="button" value="Edificios">
+
+        <div class="panel_edificio">
+            <input class="btn btn-danger" id="cerrar_panel" type="button" value="X">
+            <input class="btn btn-info" type="button" value="El Santuario de los Stand">
+            <input class="btn btn-primary" type="button" value="Casa del usuario del Stand">
+            <input class="btn btn-light" type="button" value="La Granja de la Fuerza">
+            <input class="btn btn-warning" type="button" value="Mercado de las Sombras">
+            <input class="btn btn-secondary" type="button" value="Los Establos de Hold Horse">
+            <input class="btn btn-info" type="button" value="El Molino de la Fuerza">
+            <input class="btn btn-warning" type="button" value="El Salón de los Stand">
+
+            <!-- <h2>Selecciona un Edificio</h2>
+            <select name="edificios" class="select_edificios">
+                <option value="almacen">El Santuario de los Stand</option>
+                <option value="cabaña">Casa del usuario del Stand</option>
+                <option value="granja">La Granja de la Fuerza</option>
+                <option value="mercado">Mercado de las Sombras</option>
+                <option value="establos">Los Establos de Hold Horse</option>
+                <option value="molino">El Molino de la Fuerza</option>
+                <option value="taberna">El Salón de los Stand</option>
+            </select> -->
+        </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>

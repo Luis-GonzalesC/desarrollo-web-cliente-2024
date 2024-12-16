@@ -1,3 +1,73 @@
-.container_edificio{
+body{
+    background-image: url("../Img/Fondo_jojos.jpg");
+    background-size: cover;
+}
+/*Div de contenedor de todo mi código css*/
+.container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+/*Div donde se mostrará las monedas y número de aquellas presentes*/
+.container__monedas{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30rem;
+    height: 8rem;
+    margin-top: 30px;
+    align-items: center;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    background-color: rgb(0, 0, 0);
+    font-size: 5rem;
+}
+/*Imagen de la moneda*/
+#img_moneda{
+    width: 5rem;
+}
+/*CSS para cada boton se irán apareciendo*/
+.botones{
+    margin: 10px;
+    width: 15rem;
+    height: 6rem;
+    background-color: #000000;
+    border: none;
+    border-radius: 25px;
+    color:white;
+    font-weight: bold;
+    font-size: 50px;
+}
+
+/* Efecto de cambio de color al pasar el ratón sobre el botón */
+.botones:hover {
+    background-color: #b1bc51; /* Gris oscuro */
+    color: black;
+}
+
+/*CSS DEL PANEL CUANDO LE DAMOS AL BOTON DE EDIFICIO*/
+.panel_edificio{
+    display: none;
+    position: absolute;
+    text-align: center;
+    width: 20%;
+    margin: 3%;
+    margin-top: 20%;
+    background-color: #0d0b0b;
+    padding: 1%;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+    border-top-right-radius: 50px;
+    right: 21%;
+}
+.panel_edificio input{
+    width: 80%;
+    margin-left: 20%;
+    border-radius: 100px;
+    margin: 1%;
+    cursor: pointer;
+}
+
+.container__edificio{
     display: none;
 }
