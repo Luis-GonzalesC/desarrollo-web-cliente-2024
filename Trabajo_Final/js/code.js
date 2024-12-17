@@ -12,15 +12,21 @@ window.onload = () =>{
         moneda: 0,
     };
 
+    let p = document.createElement("p");
+    p.appendChild(document.createTextNode("+1"));
+    p.setAttribute("class", "sumar");
+    
     //Generador de monedas
     boton_iniciado.addEventListener("click",
         ()=>{ //Ejecuta la función despues de esperar un número determinado de segundos
             setTimeout(() => {
+                boton_iniciado.appendChild(p);
                 jugador.moneda++;
                 contadorMonedas.textContent = jugador.moneda;
                 if(jugador.moneda == 2) edificio.setAttribute("style", "display: block")
             }, (tiempo_Modena * jugador.moneda) * 1000); //convierto el tiempo a milisegundos porque setTimeout requiere milisegundos no segundos
         }, false)
+    
 
     edificio.addEventListener("click", 
         ()=>{

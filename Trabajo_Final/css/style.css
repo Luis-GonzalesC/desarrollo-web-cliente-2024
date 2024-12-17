@@ -1,5 +1,5 @@
 body{
-    background-image: url("../Img/Fondo_jojos.jpg");
+    background-image: url("../img/Fondo_jojos.jpg");
     background-size: cover;
 }
 /*Div de contenedor de todo mi código css*/
@@ -37,6 +37,24 @@ body{
     color:white;
     font-weight: bold;
     font-size: 50px;
+}
+
+.sumar{
+    color: #b1bc51;
+    transition: 300ms ease-in-out;
+    animation: sumar_mas_uno 2s;
+}
+
+@keyframes sumar_mas_uno {
+    /*Lo mismo que poner 0% => empieza*/
+    from{
+        transform: translateY(250%);
+    }
+    /*Lo mismo que poner 100% => Destino*/
+    to{
+        transform: translateX(0);
+    }
+    
 }
 
 /* Efecto de cambio de color al pasar el ratón sobre el botón */
