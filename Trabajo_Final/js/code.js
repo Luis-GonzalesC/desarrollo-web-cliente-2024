@@ -4,7 +4,6 @@ window.onload = () =>{
     let edificio =  document.getElementsByTagName("input")[1];; //Boton de los edificios
 
     //Referencias al panel de los eficios
-    let panel = document.getElementsByClassName("panel_edificio")[0];
     let cerrar_panel = document.querySelector("#cerrar_panel");
 
     let tiempo_Modena = 0.25;
@@ -16,13 +15,17 @@ window.onload = () =>{
     boton_iniciado.addEventListener("click",
         ()=>{ //Ejecuta la función despues de esperar un número determinado de segundos
             setTimeout(() => {
-                /*let p = document.createElement("p");
+                let p = document.createElement("p");
                 p.appendChild(document.createTextNode("+1"));
                 p.setAttribute("class", "sumar");
-                boton_iniciado.appendChild(p);*/
+                boton_iniciado.appendChild(p);
                 jugador.moneda++;
                 contadorMonedas.textContent = jugador.moneda;
                 if(jugador.moneda == 2) edificio.setAttribute("style", "display: block")
+                // Eliminar el elemento <p> después de la animación
+                setTimeout(() => {
+                    boton_iniciado.removeChild(p); 
+                }, 2000);
             }, (tiempo_Modena * jugador.moneda) * 1000); //convierto el tiempo a milisegundos porque setTimeout requiere milisegundos no segundos
         }, false)
     
