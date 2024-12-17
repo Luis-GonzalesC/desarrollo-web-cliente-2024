@@ -39,20 +39,25 @@ body{
     font-size: 50px;
 }
 
+/*Codigo CSS para los +1 que iran apareciendo en pantalla*/
 .sumar{
-    color: #b1bc51;
-    /*transition: 300ms ease-in-out;*/
+    position: absolute;
+    color: white;
+    font-size: 50px;
+    background-color: #b1bc51; /* Fondo de color atractivo */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3); /* Sombra para destacar */
     animation: sumar_mas_uno 2s;
 }
 
 @keyframes sumar_mas_uno {
     from{
-        transform: translateY(250%);
+        transform: translateY(0%);
+        opacity: 1;
     }
     to{
-        transform: translateX(0);
+        transform: translateY(-150%);
+        opacity: 0;
     }
-    
 }
 
 /* Efecto de cambio de color al pasar el ratón sobre el botón */

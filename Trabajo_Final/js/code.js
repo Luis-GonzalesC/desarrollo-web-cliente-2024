@@ -13,19 +13,24 @@ window.onload = () =>{
     
     //Generador de monedas
     boton_iniciado.addEventListener("click",
-        ()=>{ //Ejecuta la función despues de esperar un número determinado de segundos
+        (ev)=>{ //Ejecuta la función despues de esperar un número determinado de segundos
             setTimeout(() => {
-                let p = document.createElement("p");
+                //==========Creando animación================
+                let p = document.createElement("p"); //Creación de un elemento p que será visualmente cada +1 en pantalla
                 p.appendChild(document.createTextNode("+1"));
                 p.setAttribute("class", "sumar");
-                boton_iniciado.appendChild(p);
-                jugador.moneda++;
-                contadorMonedas.textContent = jugador.moneda;
-                if(jugador.moneda == 2) edificio.setAttribute("style", "display: block")
-                // Eliminar el elemento <p> después de la animación
+                p.setAttribute("style", `
+                    top: ${ev.clientY}px; 
+                    left: ${ev.clientX}px;
+                `);
+                boton_iniciado.parentElement.appendChild(p); //Agregando el elemento p al padre del boton
+                jugador.moneda++;//Sumandole a la moneda del jugador
+                contadorMonedas.textContent = jugador.moneda;//Agreganado texto
+                if(jugador.moneda == 2) edificio.setAttribute("style", "display: block") 
+                //Eliminando el elemento p luego de la animación
                 setTimeout(() => {
-                    boton_iniciado.removeChild(p); 
-                }, 2000);
+                    boton_iniciado.parentElement.removeChild(p); 
+                }, 2000);//2000 => 2s (lo que dura mi animación creada)
             }, (tiempo_Modena * jugador.moneda) * 1000); //convierto el tiempo a milisegundos porque setTimeout requiere milisegundos no segundos
         }, false)
     
