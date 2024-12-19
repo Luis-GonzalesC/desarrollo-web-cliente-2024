@@ -6,6 +6,14 @@ window.onload = () =>{
     //Referencias al panel de los eficios
     let cerrar_panel = document.querySelector("#cerrar_panel");
 
+    //Array de todos los edificios que hay
+    let array_eficios = document.querySelectorAll(".panel_edificio > input");
+    //En un inicio todos los edificios estarán escondidos y conforme se obtenga monedas se iran desbloqueando uno a uno
+    for (let edificios of array_eficios) {
+        edificios.setAttribute("style", "display: none");
+    }
+    
+    //Variable del juegador
     let tiempo_Modena = 0.25;
     let jugador = {
         moneda: 0,
@@ -33,15 +41,16 @@ window.onload = () =>{
                 }, 2000);//2000 => 2s (lo que dura mi animación creada)
             }, (tiempo_Modena * jugador.moneda) * 1000); //convierto el tiempo a milisegundos porque setTimeout requiere milisegundos no segundos
         }, false)
-    
 
     edificio.addEventListener("click", 
         ()=>{
             //Cuando se haga click que se habilite una lista con los edificios
             let panel = document.getElementsByClassName("panel_edificio")[0];
             panel.setAttribute("style", "display: block");
+            //Con 2 monedas se desbloquea directamente edificio
+            array_eficios[0].setAttribute("style", "display: block");
         }, false)
-    
+
     cerrar_panel.addEventListener("click", 
         ()=>{
             //Cuando se haga click que se habilite una lista con los edificios

@@ -93,16 +93,6 @@ body{
     display: none;
 }
 
-
-#btn-menu{
-    display: none;
-}
-
-.container__edificio{
-    position: absolute;
-    background: rgb(0, 0, 0, 0.5);
-}
-
 /*Diseño completamente responsivo*/
 @media (max-width: 576px){
     body{
