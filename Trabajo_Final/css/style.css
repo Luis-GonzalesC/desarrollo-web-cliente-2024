@@ -79,7 +79,7 @@ body{
     border-bottom-left-radius: 50px;
     border-bottom-right-radius: 50px;
     border-top-right-radius: 50px;
-    right: 21%;
+    right: 19.7%;
 }
 .panel_edificio input{
     width: 80%;
@@ -88,9 +88,69 @@ body{
     margin: 1%;
     cursor: pointer;
 }
+.panel_edificio input:hover{
+    scale: 1.1;
+}
 
 .container__edificio{
     display: none;
+}
+
+/*Css del boton que recogerá recursos*/
+#btn_recoger{
+    display: none;
+    margin-left: auto; /* Empuja el botón hacia la derecha */
+    margin-top: -20rem;
+    width: 7rem;
+    height: 3rem;
+    background-color: #000000;
+    border: none;
+    border-radius: 25px;
+    color:white;
+    font-weight: bold;
+    font-size: 25px;
+    animation: mover_recoger 2s;
+}
+@keyframes mover_recoger {
+    from{
+        opacity: 0;
+        transform: translateY(-200%);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0%);
+    }
+}
+
+#btn_recoger:hover{
+    background-color: #b1bc51;
+    cursor: pointer;
+}
+
+/*CSS para las imagenes de los recursos*/
+.recursos{
+    display: none;
+    position: absolute;
+    left: 3rem;
+    top: 13rem;
+    animation: mover_cajas 2s;
+}
+
+@keyframes mover_cajas {
+    from{
+        transform: translateX(-100%);
+    }
+    to{
+        transform: translateX(0%);
+    }
+}
+
+.imagen_recursos{
+    width: 50px;
+    height: 54px;
+}
+.texto_recursos{
+    color:white;
 }
 
 /*Diseño completamente responsivo*/

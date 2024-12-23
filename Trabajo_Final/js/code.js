@@ -3,20 +3,28 @@ window.onload = () =>{
     let contadorMonedas = document.getElementById("contadorMonedas");//Monedas en el HTML
     let edificio =  document.getElementsByTagName("input")[1];; //Boton de los edificios
 
+    let boton_recoger = document.getElementById("btn_recoger");
+    
     //Referencias al panel de los eficios
     let cerrar_panel = document.querySelector("#cerrar_panel");
-
     //Array de todos los edificios que hay
     let array_eficios = document.querySelectorAll(".panel_edificio > input");
     //En un inicio todos los edificios estarán escondidos y conforme se obtenga monedas se iran desbloqueando uno a uno
     for (let edificios of array_eficios) {
-        edificios.setAttribute("style", "display: none");
+        edificios.disabled = true;
     }
     
     //Variable del juegador
     let tiempo_Modena = 0.25;
     let jugador = {
         moneda: 0,
+        piedra: 0,
+        madera: 0,
+        trabajadores: 0,
+        trigo: 0,
+        cuero: 0,
+        caballos: 0,
+        pan:0
     };
     
     //Generador de monedas
@@ -34,7 +42,7 @@ window.onload = () =>{
                 boton_iniciado.parentElement.appendChild(p); //Agregando el elemento p al padre del boton
                 jugador.moneda++;//Sumandole a la moneda del jugador
                 contadorMonedas.textContent = jugador.moneda;//Agreganado texto
-                if(jugador.moneda == 2) edificio.setAttribute("style", "display: block") 
+                update_edificios(jugador, edificio, array_eficios);//Verificando mis edificios con la moneda y recursos
                 //Eliminando el elemento p luego de la animación
                 setTimeout(() => {
                     boton_iniciado.parentElement.removeChild(p); 
@@ -47,8 +55,6 @@ window.onload = () =>{
             //Cuando se haga click que se habilite una lista con los edificios
             let panel = document.getElementsByClassName("panel_edificio")[0];
             panel.setAttribute("style", "display: block");
-            //Con 2 monedas se desbloquea directamente edificio
-            array_eficios[0].setAttribute("style", "display: block");
         }, false)
 
     cerrar_panel.addEventListener("click", 
@@ -58,5 +64,52 @@ window.onload = () =>{
             panel.setAttribute("style", "display: none");
         }, false)
     
+    //======================CONSTRUYENDO LOS EDIFICIOS======================//
+    //Evento para el Almacén => El santuario de los Stand (costo: 2 monedas)
+    array_eficios[1].addEventListener("click", () => {
+        if (jugador.moneda >= 2) {
+            jugador.moneda -= 2; //Restamos 2 monedas por comprar el Almacén
+            contadorMonedas.textContent = jugador.moneda; //Actualizamos la cantidad de monedas
+
+            boton_recoger.setAttribute("style", "display: block");//Se desbloquea el boton de recoger
+            document.getElementsByClassName("recursos")[0].setAttribute("style", "display: block");//Se desbloquea el marcador de recursos
+            //disponibles 3 nuevos edificios en el panel correspondiente: Cabaña, Granja y Mercado 
+            array_eficios[2].disabled = false;
+            array_eficios[3].disabled = false;
+            array_eficios[4].disabled = false;
+
+            alert("¡Has construido un Almacén!");
+        } else alert("No tienes suficientes monedas para comprar El santuario de los Stand.");
+    });
+
+    boton_recoger.addEventListener("click", 
+        ()=>{
+            //Se deshabilita el boton por un tiempo
+            boton_recoger.disabled = true;
+            boton_recoger.setAttribute("style", `
+                display: block;
+                background-color: grey;
+                opacity: 0.5;`);
+            //Valor aleatorio entre piedra y madera por el número de trabajadores
+            jugador.piedra = Math.floor(Math.random() * jugador.trabajadores);
+            jugador.madera = Math.floor(Math.random() * jugador.trabajadores);
+            setTimeout(() => {
+                boton_recoger.disabled = false;
+                //Vuelvo a poner el boton en su forma original
+                boton_recoger.id = "btn_recoger";
+                boton_recoger.setAttribute("style", "display: block");
+            }, (45 - jugador.trabajadores) * 1000);
+            alert("click"); 
+        }, false);
+
 }
 
+function update_edificios(jugador, edificio, array_eficios){
+    if(jugador.moneda >= 2){
+        edificio.setAttribute("style", "display: block");
+        //Con 2 monedas se desbloquea directamente edificio
+        array_eficios[0].disabled = false;
+        array_eficios[1].disabled = false;
+    }
+
+}
