@@ -95,9 +95,10 @@ window.onload = () =>{
                 background-color: grey;
                 opacity: 0.5;`);
             //Valor aleatorio entre piedra y madera por el número de trabajadores
-            jugador.piedra = Math.floor(Math.random() * jugador.trabajadores);
-            jugador.madera = Math.floor(Math.random() * jugador.trabajadores);
+            jugador.piedra = Math.floor(Math.random() * (jugador.trabajadores + 2));
+            jugador.madera = Math.floor(Math.random() * (jugador.trabajadores + 2));
             recursos[0].textContent = "Piedra Estelar: " + jugador.piedra;
+            recursos[1].textContent = "Madera de la Familia Joestar: " + jugador.piedra;
             setTimeout(() => {
                 boton_recoger.disabled = false;
                 //Vuelvo a poner el boton en su forma original
