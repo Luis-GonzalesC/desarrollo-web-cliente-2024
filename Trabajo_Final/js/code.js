@@ -13,6 +13,8 @@ window.onload = () =>{
     for (let edificios of array_eficios) {
         edificios.disabled = true;
     }
+    //cogiendo los recursos del html
+    let recursos = document.querySelectorAll('.recursos .texto_recursos');
     
     //Variable del juegador
     let tiempo_Modena = 0.25;
@@ -27,6 +29,7 @@ window.onload = () =>{
         pan:0
     };
     
+    //======================PANTALLA INICIAL======================//
     //Generador de monedas
     boton_iniciado.addEventListener("click",
         (ev)=>{ //Ejecuta la función despues de esperar un número determinado de segundos
@@ -66,7 +69,8 @@ window.onload = () =>{
     
     //======================CONSTRUYENDO LOS EDIFICIOS======================//
     //Evento para el Almacén => El santuario de los Stand (costo: 2 monedas)
-    array_eficios[1].addEventListener("click", () => {
+    array_eficios[1].addEventListener("click", 
+        () => {
         if (jugador.moneda >= 2) {
             jugador.moneda -= 2; //Restamos 2 monedas por comprar el Almacén
             contadorMonedas.textContent = jugador.moneda; //Actualizamos la cantidad de monedas
@@ -93,6 +97,7 @@ window.onload = () =>{
             //Valor aleatorio entre piedra y madera por el número de trabajadores
             jugador.piedra = Math.floor(Math.random() * jugador.trabajadores);
             jugador.madera = Math.floor(Math.random() * jugador.trabajadores);
+            recursos[0].textContent = "Piedra Estelar: " + jugador.piedra;
             setTimeout(() => {
                 boton_recoger.disabled = false;
                 //Vuelvo a poner el boton en su forma original
@@ -100,7 +105,10 @@ window.onload = () =>{
                 boton_recoger.setAttribute("style", "display: block");
             }, (45 - jugador.trabajadores) * 1000);
             alert("click"); 
-        }, false);
+    }, false);
+
+    //Evento para la Cabaña => Casa del usuario del Stand (costo: 6 monedas y 6 piedras)
+
 
 }
 
