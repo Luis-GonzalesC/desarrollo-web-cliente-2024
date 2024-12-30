@@ -44,8 +44,8 @@ body{
     position: absolute;
     color: white;
     font-size: 50px;
-    background-color: #b1bc51; /* Fondo de color atractivo */
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3); /* Sombra para destacar */
+    background-color: #b1bc51;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
     animation: sumar_mas_uno 2s;
 }
 
@@ -62,7 +62,7 @@ body{
 
 /* Efecto de cambio de color al pasar el ratón sobre el botón */
 .botones:hover {
-    background-color: #b1bc51; /* Gris oscuro */
+    background-color: #b1bc51;
     color: black;
 }
 

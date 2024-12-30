@@ -16,7 +16,7 @@ window.onload = () =>{
     //cogiendo los recursos del html
     let recursos = document.querySelectorAll('.recursos .texto_recursos');
     
-    //Variable del juegador
+    //Variable del jugador
     let tiempo_Modena = 0.25;
     let jugador = {
         moneda: 0,
@@ -28,6 +28,9 @@ window.onload = () =>{
         caballos: 0,
         pan:0
     };
+
+    //Variables para generar trigo y establecer un temporizador
+    let timer;
     
     //======================PANTALLA INICIAL======================//
     //Generador de monedas
@@ -45,8 +48,12 @@ window.onload = () =>{
                 boton_iniciado.parentElement.appendChild(p); //Agregando el elemento p al padre del boton
                 jugador.moneda++;//Sumandole a la moneda del jugador
                 contadorMonedas.textContent = jugador.moneda;//Agreganado texto
-                update_edificios(jugador, edificio, array_eficios);//Verificando mis edificios con la moneda y recursos
-                //Eliminando el elemento p luego de la animación
+                if(jugador.moneda >= 2){
+                    edificio.setAttribute("style", "display: block");
+                    //Con 2 monedas se desbloquea directamente edificio
+                    array_eficios[0].disabled = false;
+                    array_eficios[1].disabled = false;
+                }                //Eliminando el elemento p luego de la animación
                 setTimeout(() => {
                     boton_iniciado.parentElement.removeChild(p); 
                 }, 2000);//2000 => 2s (lo que dura mi animación creada)
@@ -83,8 +90,10 @@ window.onload = () =>{
             array_eficios[4].disabled = false;
 
             alert("¡Has construido un Almacén!");
+            alert("Están disponibles 3 nuevos edificios");
+
         } else alert("No tienes suficientes monedas para comprar El santuario de los Stand.");
-    });
+        }, false);
 
     boton_recoger.addEventListener("click", 
         ()=>{
@@ -95,30 +104,64 @@ window.onload = () =>{
                 background-color: grey;
                 opacity: 0.5;`);
             //Valor aleatorio entre piedra y madera por el número de trabajadores
-            jugador.piedra = Math.floor(Math.random() * (jugador.trabajadores + 2));
-            jugador.madera = Math.floor(Math.random() * (jugador.trabajadores + 2));
+            let piedra_random = Math.floor(Math.random() * (jugador.trabajadores + 2));
+            let madera_random = Math.floor(Math.random() * (jugador.trabajadores + 2));
+            jugador.piedra += piedra_random;
+            jugador.madera += madera_random;
+            alert(`Obtuviste ${piedra_random} de piedra y ${madera_random} de madera`);
+            
             recursos[0].textContent = "Piedra Estelar: " + jugador.piedra;
-            recursos[1].textContent = "Madera de la Familia Joestar: " + jugador.piedra;
+            recursos[1].textContent = "Madera de la Familia Joestar: " + jugador.madera;
             setTimeout(() => {
                 boton_recoger.disabled = false;
                 //Vuelvo a poner el boton en su forma original
                 boton_recoger.id = "btn_recoger";
                 boton_recoger.setAttribute("style", "display: block");
-            }, (45 - jugador.trabajadores) * 1000);
-            alert("click"); 
-    }, false);
+            }, (0 - jugador.trabajadores) * 1000);
+        }, false)
 
     //Evento para la Cabaña => Casa del usuario del Stand (costo: 6 monedas y 6 piedras)
+    let min_monedas = 6;
+    let min_piedras = 6;
+    array_eficios[2].addEventListener("click", 
+        ()=>{
+            if(jugador.moneda >= min_monedas && jugador.piedra >= min_piedras){//Costo mínimo
+                //Le quitamos la cantidad de monedas o piedras del coste por cada cabaña
+                jugador.moneda -= min_monedas;
+                jugador.piedra -= min_piedras;
+                jugador.trabajadores += 5; //Sumamos en 5 los trabajadores
+                contadorMonedas.textContent = jugador.moneda; //Actualizo la cantidad de monedas
+                recursos[0].textContent = "Piedra Estelar: " + jugador.piedra; //Actualizo la cantidad de piedras
+                recursos[2].textContent = "Usuarios de Stand: " + jugador.trabajadores;
+                //Se incrementa su coste en 5 luego de crear una cabaña
+                min_monedas += 5;
+                min_piedras += 5;
+                alert("Acabas de contruir una cabaña");
+                alert("Se acaban de agregar 5 trabajadores");
+            } else alert(`Como mínimo se necesitan ${min_monedas} monedas y ${min_piedras} piedras`);
+        }, false)
+    
+    //Evento para la Granja => La Granja de la Fuerza (costo: 8 monedas, 9 piedras y 5 de madera)
+    array_eficios[3].addEventListener("click",
+        ()=>{
+            if(jugador.moneda >= 8 && jugador.piedra >= 9 && jugador.madera >= 5){
+                array_eficios[5].disabled = false;
+                array_eficios[3].disabled = true;
+                alert("Se ha desbloqueado un nuevo edificio");
 
-
-}
-
-function update_edificios(jugador, edificio, array_eficios){
-    if(jugador.moneda >= 2){
-        edificio.setAttribute("style", "display: block");
-        //Con 2 monedas se desbloquea directamente edificio
-        array_eficios[0].disabled = false;
-        array_eficios[1].disabled = false;
-    }
-
+                timer = setInterval(() => {
+                    jugador.trigo += 1;
+                    recursos[3].textContent = "Trigo de los Joestar: " + jugador.trigo;
+                    alert("Obtuviste 1 de trigo");
+                }, 20000);
+            } else alert("Se necesitan 8 monedas, 9 piedras y 5 de madera para poder construir la granja");
+        }, false)
+    
+    //Evento para el Mercado => Mercado de las Sombras (costo: 8 de piedra y 9 de madera)
+    array_eficios[4].addEventListener("click",
+        ()=>{
+            if(jugador.piedra >= 8 && jugador.madera >= 9){
+                //FALTAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+            }else alert("Se necesitan 8 piedras y 9 de madera para poder construir el Mercado");
+        }, false)
 }
