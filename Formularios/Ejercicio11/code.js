@@ -4,7 +4,7 @@ window.onload = () => {
     
     boton.addEventListener("click", (ev) => {
         ev.preventDefault();
-
+        
         //Validacion de cada apartado
         if (validarDNI(formulario[0]));
         else if (validarNombre(formulario[1]));
@@ -13,7 +13,6 @@ window.onload = () => {
         else if (validarWeb(formulario[4]));
         else if (validarContrasenia(formulario[5]));
         else alert("epaaa");
-
 
     }, false);
 }
