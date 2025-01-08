@@ -1,7 +1,13 @@
 window.onload = () => {
     let formulario = document.forms[0];
     let boton = document.querySelector("input[type='submit']");
-    
+    let boton_resetear = document.querySelector("input[type='button']");
+
+    boton_resetear.addEventListener("click", 
+        ()=>{
+            formulario.reset();
+        }, false)
+
     boton.addEventListener("click", (ev) => {
         ev.preventDefault();
         
@@ -13,7 +19,7 @@ window.onload = () => {
         else if (validarFechaNacimiento(formulario[3])) formulario[3].focus();
         else if (validarWeb(formulario[4])) formulario[4].focus();
         else if (validarContrasenia(formulario[5])) formulario[5].focus();
-        else alert("epaaa");
+        else window.location.href = "todo_bien.html"; //Dirección que nos llevará a otra página si todo ha ido bien
 
     }, false);
 }
