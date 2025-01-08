@@ -6,12 +6,13 @@ window.onload = () => {
         ev.preventDefault();
         
         //Validacion de cada apartado
-        if (validarDNI(formulario[0]));
-        else if (validarNombre(formulario[1]));
-        else if (validarApellido(formulario[2]));
-        else if (validarFechaNacimiento(formulario[3]));
-        else if (validarWeb(formulario[4]));
-        else if (validarContrasenia(formulario[5]));
+        //True si está mal, devuelvo el foco
+        if (validarDNI(formulario[0])) formulario[0].focus();
+        else if (validarNombre(formulario[1])) formulario[1].focus();
+        else if (validarApellido(formulario[2])) formulario[2].focus();
+        else if (validarFechaNacimiento(formulario[3])) formulario[3].focus();
+        else if (validarWeb(formulario[4])) formulario[4].focus();
+        else if (validarContrasenia(formulario[5])) formulario[5].focus();
         else alert("epaaa");
 
     }, false);
@@ -28,17 +29,14 @@ function validarDNI(valorDni) {
 
     if (dni == '') {
         alert("El dni no puede estar vacio");
-        valorDni.focus();//Devuelvo el foco
         return true;
     } else if (dni.length != 9) {
         alert("El dni solo debe tener 9 caracteres");
         //valorDni.value = ""; // Dejo vacío la caja de texto
-        valorDni.focus();//Devuelvo el foco
         return true;
     } else if (isNaN(dniNum) || !isNaN(dniLetra)) {
         alert("El dni debe tener 8 números y una letra");
         //valorDni.value = ""; // Dejo vacío la caja de texto
-        valorDni.focus();//Devuelvo el foco
         return true;
     }
     return false;
@@ -50,12 +48,10 @@ function validarNombre(valorNombre) {
     let nombre = valorNombre.value.split(" ");//Lo combierto en un array para saber su longitud
     if (valorNombre.value == "") {
         alert("El nombre no puede estar vacío");
-        valorNombre.focus();
         return true;
     } else if (nombre.length < 1 || nombre.length > 2) { //Si la longitud del array no es ni 1 o 2 ESTÁ MAL
         alert("Se debe contener uno o dos nombres");
         //valorNombre.value = ""; // Dejo vacío la caja de texto
-        valorNombre.focus(); //Devuelvo el foco
         return true;
     }
     return false;
@@ -66,12 +62,10 @@ function validarApellido(valorApellido) {
     let apellido = valorApellido.value.split(" ");//Lo combierto en un array para saber su longitud
     if (valorApellido.value == "") {
         alert("El apellido no puede estar vacío");
-        valorApellido.focus(); //Devuelvo el foco
         return true;
     } else if (apellido.length < 1 || apellido.length > 2) { //Si la longitud del array no es ni 1 o 2 ESTÁ MAL
         alert("Se debe contener uno o dos apellidos");
         //valorApellido.value = ""; // Dejo vacío la caja de texto
-        valorApellido.focus(); //Devuelvo el foco
         return true;
     }
     return false;
@@ -85,19 +79,15 @@ function validarFechaNacimiento(valorFecha) {
     if (fecha.length == 1) {//Por si me ingresan cualquier cosa que no sea una fecha
         alert("Se debe escoger una fecha de nacimiento correcta");
         valorFecha.type = "date"; // Cambio la fecha a tipo date por si la cambian a text
-        valorFecha.focus();
         return true;
     } else if (fecha[0].length != 4 || fecha[1].length != 2 || fecha[2].length != 2) { //Comprobando el tamaño de las fechas año, mes y dia sean correctas
         alert("La fecha de nacimiento no es correcta");
-        valorFecha.focus();
         return true;
     } else if (isNaN(fecha[0]) || isNaN(fecha[1]) || isNaN(fecha[2])) { //Por si lo cambian a tipo text comprobando que sea un número
         alert("La fecha de nacimiento no es válida, deben ser números");
-        valorFecha.focus();
         return true;
     } else if (fecha[1] < 1 || fecha[1] > 12 || fecha[2] < 1 || fecha[2] > 31) { //Comprobando el mes (1-12) y el dia (1-31)
         alert("La fecha de nacimiento no es válida, día o mes incorrecto");
-        valorFecha.focus();
         return true;
     }
     return false;
@@ -108,7 +98,6 @@ function validarWeb(valorWeb) {
     let web = valorWeb.value.substring(0, 8); //Solo tomo los primeros caracteres
     if (web != "https://") {
         alert("La web personal debe empezar con https://");
-        valorWeb.focus();
         return true;
     }
     return false;
@@ -119,7 +108,6 @@ function validarContrasenia(valorContra) {
     let contraseña = valorContra.value;
     if (contraseña.length < 8 || contraseña.length > 12) {
         alert("La contraseña solo puede estar entre 8 y 12 caracteres");
-        valorContra.focus();
         return true;
     }
     return false;
