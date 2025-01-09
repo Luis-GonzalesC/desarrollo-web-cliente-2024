@@ -102,6 +102,7 @@ function validarFechaNacimiento(valorFecha) {
 //Función para validar la Web
 function validarWeb(valorWeb) {
     let web = valorWeb.value.substring(0, 8); //Solo tomo los primeros caracteres
+    //let web = valorWeb.startsWith("https://") //Me verifica que la cadena empiece como yo le diga
     if (web != "https://") {
         alert("La web personal debe empezar con https://");
         return true;
