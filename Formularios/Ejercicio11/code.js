@@ -20,6 +20,7 @@ window.onload = () => {
         else if (validarWeb(formulario[4])) formulario[4].focus();
         else if (validarContrasenia(formulario[5])) formulario[5].focus();
         else window.location.href = "todo_bien.html"; //Dirección que nos llevará a otra página si todo ha ido bien
+        //formulario.submit();
 
     }, false);
 }
