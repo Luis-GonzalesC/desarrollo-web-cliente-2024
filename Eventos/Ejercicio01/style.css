@@ -1,0 +1,21 @@
+body{
+    display: flex;
+    align-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+section{
+    background-color: aqua;
+    width: 100rem;
+    height: 50rem;
+}
+p{
+    background-color: aquamarine;
+    height: 40rem;
+    width: 40rem;
+}
+a{
+    background-color: azure;
+    font-size: 5rem;
+}
