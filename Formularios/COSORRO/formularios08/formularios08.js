@@ -20,4 +20,12 @@ window.onload = () => {
         }, false);        
         i++;
     }
+
+    /*
+        parentElement => Devuelve el padre del elemento
+        firstElementChild => Devuelve el primer elemento hijo
+        lastElementChild => Devuelve el último elemento hijo
+        previousElementSibling => Devuelve el elemento hermano anterior
+        nextElementSibling => Devuelve el elemento hermano siguiente
+    */
 }
