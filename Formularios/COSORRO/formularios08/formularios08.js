@@ -22,10 +22,25 @@ window.onload = () => {
     }
 
     /*
+        Ejercicio 3 => CHeckbox
+        Ejercicio 8 => Radio
+        EJercicio 10 => Select
+
+        blur() Pierde el foco del ratón sobre el objeto especificado.
+        focus() Obtiene el foco del ratón sobre el objeto especificado.
+        select() Selecciona todo el texto dentro del objeto dado.
+
         parentElement => Devuelve el padre del elemento
         firstElementChild => Devuelve el primer elemento hijo
         lastElementChild => Devuelve el último elemento hijo
         previousElementSibling => Devuelve el elemento hermano anterior
         nextElementSibling => Devuelve el elemento hermano siguiente
+        
+        EJEMPLOS DE PATRON POR SI ME SIRVE DE AYUDA
+        ^[a-zA-Z][a-zA-Z0-9-_]{1,16}
+        ^[#][A-Fa-f0-9]{3,6}
+        ^(http[s]?:\/\/)(www)?[0-9a-z-]+[\.]([0-9a-z-]+[\.])?[a-z]{2,3}
+        (\d{1,3}\.){3}\d{1,3}
+
     */
 }

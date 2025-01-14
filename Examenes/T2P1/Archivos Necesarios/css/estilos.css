@@ -1,0 +1,74 @@
+
+body{
+    background-color:  #E8E1CC;
+    color: #63593A;
+    font-family: Arial,sans-serif;
+}
+
+form{
+    width: 830px;
+    margin: 1em auto;
+    display: flex;
+    align-items: flex-start;
+}
+
+.letras{
+    text-align: right;
+    padding-right: .35em;
+    width: 40%;
+}
+.centrados{
+    text-align: center;
+}
+
+.cabe{
+    text-align: center; 
+    background-color: #636058;
+    color: #E8E1CC;
+    height: 80px;
+}
+
+input[type='text'], input[type='password']{
+    width: 170px;
+}
+
+input[type='reset'], input[type='submit']{
+    margin-top: 1em;
+    padding: .55em;
+    width: 100px;
+}
+
+textarea{
+    height: 130px;
+    font-size: 0.95em;
+    font-family: monospace; 
+    resize: none;
+    white-space: pre;
+    padding: .35em;
+}
+
+input[type='checkbox']+span{
+    padding-right:.25em;
+}
+
+table{
+    max-width: 400px;
+    min-width: 350px;
+    margin: 0 0.5em;
+}
+
+.subTitulo{
+    background-color: #B0AB9D;
+    color: #FFF;
+    margin-top: .5em;
+}
+
+#afiText{
+    height: 50px;
+}
+
+.errores{ 
+    height: 70px;
+    color: red;
+    padding: .2em;
+}

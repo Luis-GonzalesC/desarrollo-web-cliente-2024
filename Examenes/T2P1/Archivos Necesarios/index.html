@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practica 1 - Trimestre 2</title>
+    <script src="jscode/code.js"></script>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+
+<body>
+    <form id="formu" action="resultado.html" method="get">
+        
+        <table>
+            <tr>
+                <td colspan=2 class="cabe"><h3>Datos de Usuario</h3></td>		
+            </tr>
+        
+            <tr>
+                <td class="letras">Nombre:</td>
+                <td><input type="text" name="nombre" placeholder="Introduce tu nombre..."></td>
+            </tr>
+            <tr>
+                <td class="letras">Clave:</td>
+                <td><input type="password" name="clave" placeholder="Introduce una clave"></td>
+            </tr>
+            <tr>
+                <td class="letras">Repite Clave:</td>
+                <td><input type="password" placeholder="Vuelve a introducir al clave"></td>
+            </tr>
+            <tr>
+                <td class="letras">Pregunta:</td>
+                <td>
+                    <select name="pregunta">
+                        <option value="0">Selecciona una pregunta...</option>
+                        <option value="1">Quien es el tu heroe?</option>
+                        <option value="2">Donde naciste?</option>
+                        <option value="3">Nombre de tu primer amor?</option>						
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="letras">Respuesta:</td>
+                <td><input type="text" name="respuesta"></td>
+            </tr>
+            <tr>
+                <td class="letras">Sexo:</td>
+                <td>
+                    <input type="radio" name="sexo" value="M"> Masculino <br>
+                    <input type="radio" name="sexo" value="F"> Femenino  <br>
+                    <input type="radio" name="sexo" value="O"> Otro
+                </td>
+            </tr>
+            <tr>
+                <td class="letras">Edad:</td>
+                <td><input type="text" name="edad"></td>
+            </tr>
+            
+        
+            <tr>
+                <td class="letras">Email:</td>
+                <td><input type="text" name="email" placeholder="Escribe un email válido..."></td>
+            </tr>
+            
+            <tr>
+                <td class="letras">Copia Email:</td>
+                <td><input type="text" name="remail" readonly></td>
+            </tr>
+            
+            <tr>
+                <td colspan="2" class="centrados subTitulo">Aficiones</td>
+            </tr>
+            <tr>
+                <td colspan="2" class="centrados">
+                    <input type="checkbox" name="af1" value="Leer"><span>Leer</span>
+                    <input type="checkbox" name="af2" value="Deporte"><span>Deporte</span>
+                    <input type="checkbox" name="af3" value="Musica"><span>Música</span>
+                </td>
+            </tr>
+            
+            <tr>
+                <td colspan="2" class="centrados">
+                    <textarea disabled cols=35 id="afiText"></textarea>
+                </td>
+            </tr>
+            
+        </table>
+
+        <table>
+            <tr>
+                <td colspan=2 class="cabe"><h3>Verificación</h3></td>		
+            </tr>
+           
+            <tr>
+                <td class="letras">Imagen de Seguridad</td>
+                <td><img src="img/captcha.jpg" alt=""></td>
+            </tr>
+            <tr>
+                <td class="letras">Captcha:</td>
+                <td><input type="text"  placeholder="Introduce las letras de la imagen"></td>
+            </tr>
+
+            <tr>
+                <td colspan="2" class="centrados">
+                    
+                    <textarea readonly cols=35>
+CONDICIONES DE REGISTRO:
+tempor incididunt ut labore et 
+dolore  magna aliqua. Ut enim 
+ad minim veniam, quis nostrud 
+exercitation ullamco laboris 
+nisi ut aliquip ex ea commodo 
+consequat. 
+Duis aute irure dolor in 
+reprehenderit in voluptate velit 
+esse cillum dolore eu fugiat 
+nulla pariatur. 
+Excepteur sint occaecat cupidatat
+non proident, sunt in culpa qui 
+officia  deserunt mollit anim id 
+est laborum.</textarea>
+                
+                </td>
+                
+            </tr>
+            <tr>
+                <td colspan="2" class="centrados"><input type="checkbox"> Acepto las condiciones de registro</td>
+            </tr>
+
+            <tr>
+                <td colspan="2" class="centrados"><input type="reset" Value="Borrar">
+                <input type="submit" Value="Enviar"></td>
+            </tr>
+            <tr>
+                <td colspan="2" class="centrados" id="errores"></td>
+            </tr>
+
+        </table>
+        
+
+
+    </form>	
+    
+</body>
+</html>
