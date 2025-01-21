@@ -7,38 +7,45 @@ window.onload = () =>{
         titulo_universitario: "Tutor",
         mostrar: function(){
             for (const valor in this) {
-                console.log(valor+": " + this[valor]);
+                if(valor != "mostrar" && valor != "cambiarNombre") console.log(valor+": " + this[valor]);
             }
+        },
+        cambiarNombre: function(name){
+            tutor.nombre = name;
+            console.log("Nombre cambiado");
+            
         }
     };
+    /*
     tutor.mostrar();
+    tutor.cambiarNombre("Estela")*/
 
     //parte 2
-    let asignaruta1 = {
+    let asignatura1 = {
         nombre_curso: "Desarrollo web en entorno cliente",
         curso: 2, //numero
         horas_totales: 16,
     };
 
-    let asignaruta2 = {
+    let asignatura2 = {
         nombre_curso: "Desarrollo web en entorno servidor",
         curso: 2, //numero
         horas_totales: 16,
     };
 
-    let asignaruta3 = {
+    let asignatura3 = {
         nombre_curso: "Base de Datos",
         curso: 1, //numero
         horas_totales: 20,
     };
 
-    let asignaruta4 = {
+    let asignatura4 = {
         nombre_curso: "Lenguaje de Marcas",
         curso: 1, //numero
         horas_totales: 18,
     };
 
-    let lista_asignaturas = [asignaruta1, asignaruta2, asignaruta3, asignaruta4];
+    let lista_asignaturas = [asignatura1, asignatura2, asignatura3, asignatura4];
 
     //parte 3
     let alumno = {
@@ -50,6 +57,10 @@ window.onload = () =>{
         lista_asignaturas,
         lista_nota : [8, 9, 9, 8]
     }
+    console.log(Object.keys(alumno));
+    console.log("===========================");
+    console.log(Object.values(alumno));
+    
 
     //PARTE 4
     let div = document.getElementsByTagName("div")[0];
@@ -59,10 +70,11 @@ window.onload = () =>{
         if(clave == "tutor"){//Si es igual al tutor quiero sacar los datos que tiene ese objeto
             div.innerHTML += "<br/>";
             div.innerHTML += "El tutor asignado es: ";
+            div.innerHTML += "<br/>";
             //console.log("El tutor asignado es:");
             for(valor_tutor in alumno.tutor){ //alumno[clave] == alumno.tutor
                 //console.log("\t-" + valor_tutor+": " + alumno.tutor[valor_tutor]); //alumno.tutor[valor_tutor] => me dice el valor de cada uno, con la notacion (.) me sale undefined
-                div.innerHTML += valor_tutor+": " + alumno.tutor[valor_tutor] + "<br/>";
+                if(valor_tutor != "mostrar" && valor_tutor != "cambiarNombre") div.innerHTML += valor_tutor+": " + alumno.tutor[valor_tutor] + "<br/>";
             }
         }
         else if(clave == "lista_asignaturas"){
@@ -91,4 +103,6 @@ window.onload = () =>{
         }
     }
     
+
+    /*================ PARTE II================*/
 }
