@@ -4,8 +4,14 @@ window.onload = () =>{
         nombre: "Paco",
         edad: 22,
         DNI: "23456789K",
-        titulo_universitario: "Tutor"
+        titulo_universitario: "Tutor",
+        mostrar: function(){
+            for (const valor in this) {
+                console.log(valor+": " + this[valor]);
+            }
+        }
     };
+    tutor.mostrar();
 
     //parte 2
     let asignaruta1 = {
@@ -47,11 +53,12 @@ window.onload = () =>{
 
     //PARTE 4
     let div = document.getElementsByTagName("div")[0];
-
+    div.innerHTML = "Los datos del alumno son: ";
+    div.innerHTML += "<br/><br/>";
     for (let clave in alumno) {
         if(clave == "tutor"){//Si es igual al tutor quiero sacar los datos que tiene ese objeto
-            div.innerHTML += "El tutor asignado es: ";
             div.innerHTML += "<br/>";
+            div.innerHTML += "El tutor asignado es: ";
             //console.log("El tutor asignado es:");
             for(valor_tutor in alumno.tutor){ //alumno[clave] == alumno.tutor
                 //console.log("\t-" + valor_tutor+": " + alumno.tutor[valor_tutor]); //alumno.tutor[valor_tutor] => me dice el valor de cada uno, con la notacion (.) me sale undefined
@@ -60,7 +67,7 @@ window.onload = () =>{
         }
         else if(clave == "lista_asignaturas"){
             div.innerHTML += "<br/>";
-            console.log("Las asignaturas son:");
+            //console.log("Las asignaturas son:");
             for (let asignatura of alumno.lista_asignaturas) { //alumno[lista_asignaturas] == alumno.lista_asignaturas (un for of para poder acceder a cada asignatura de la lista)
                 for(valor_asignatura in asignatura){
                     //console.log("\t-" + valor_asignatura+": " + asignatura[valor_asignatura]);
@@ -70,17 +77,18 @@ window.onload = () =>{
             }
         }
         else if(clave == "lista_nota"){
-            div.innerHTML += "<br/>";
-            console.log("Las notas son:");
+            //console.log("Las notas son:");
             for (let i = 0; i < alumno.lista_nota.length; i++) {
                 //console.log("\t-" + alumno.lista_nota[i]);
                 div.innerHTML += "Las notas son: ";
                 div.innerHTML += alumno.lista_nota[i] + "<br/>"
             }
         }
-        else console.log(clave+": " + alumno[clave]);
-        
-        
+        else{
+            div.innerHTML += clave+": " + alumno[clave];
+            div.innerHTML += "<br/>";
+            //console.log(clave+": " + alumno[clave]);
+        }
     }
     
 }
