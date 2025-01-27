@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio04</title>
+    <script src="code.js"></script>
+</head>
+<body>
+    <form action="" method="">
+        <label>Usuario</label>
+        <input type="text" name="nombre"><br><br>
+        <label>Contraseña</label>
+        <input type="password" name="contrasena"> <br>
+        <input type="submit" value="Enviar">
+        <input type="reset" value="BORRAR">
+
+    </form>
+
+    <script>
+        let formu = document.forms[0];
+        
+        if(localStorage.getItem("usuario") != null){//Verifico que esté creado el localStorage y mi clave no sea null
+            let formu = document.forms[0];
+            let objeto = JSON.parse(localStorage.getItem("usuario")); //Recibo el objeto en formato STRING y lo paso a CADENA
+            let i = 0;
+            for(dato in objeto){//En un bucle voy agregando los valores
+                formu[i].value = objeto[dato];
+                i++;
+            }
+            console.log("dentro");
+        }else console.log("fuera");
+        
+        
+    </script>
+</body>
+</html>
