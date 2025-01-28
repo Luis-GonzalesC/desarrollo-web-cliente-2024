@@ -1,0 +1,14 @@
+
+- Libros.json solo se puede enlazar en inicio.html (en las otras no tiene sentido, hay que usar LocalStorage)
+
+- No se puede modificar el HTML: mirad los elementos que hay y añadir cosas dentro de ellos
+
+INICIO
+- Cada libro en ARTICLE clase 'presentacion' y todos los articles dentro del section.
+- Dentro de los article: un h3 y una img
+- Frase con num libros dentro del H1
+
+MOSTRAR
+- dentro del section info
+- hay que hacer un H2 para el titulo y una table para los datos.
+- La imagen debe pertener a la clase portada.
