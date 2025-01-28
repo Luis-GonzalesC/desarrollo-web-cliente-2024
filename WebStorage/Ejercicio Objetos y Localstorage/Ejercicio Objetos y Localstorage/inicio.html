@@ -16,8 +16,9 @@
     </footer>
 
     <script>
-        localStorage.clear();
-        localStorage.setItem("libros", JSON.stringify(library));
+        if(localStorage.getItem("libros") == null){//Verifico que esté creado el localStorage y mi clave no sea null
+            localStorage.setItem("libros", JSON.stringify(library));
+        }
     </script>
 </body>
 </html>
