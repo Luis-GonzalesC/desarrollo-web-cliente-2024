@@ -32,8 +32,6 @@ window.onload = () =>{
 
                 li1.addEventListener("mouseenter", function(ev){
                     console.log(ev);
-                    let posx = ev.clientX;//ARREGLAR ESTO
-                    let poxy = ev.clientY;//ARREGLAR ESTO
                     img.setAttribute("src", dato.image);
                     img.setAttribute("class", "img");
                     div.setAttribute("class", "contendor_imagen");
@@ -41,6 +39,8 @@ window.onload = () =>{
                     document.body.appendChild(div);
                     
 
+                    let posx = ev.clientX;//ARREGLAR ESTO
+                    let poxy = ev.clientY;//ARREGLAR ESTO
                     li1.addEventListener("mousemove", ()=>{
                         div.setAttribute("style", `
                             left: ${posx}px;
