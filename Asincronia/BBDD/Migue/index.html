@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="accesoBD.js" defer></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e3f2fd;
+            /* Azul claro */
+            color: #0d47a1;
+            /* Azul oscuro */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        h1 {
+            color: #1565c0;
+            font-size: 24px;
+            text-align: center;
+        }
+
+        form {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 320px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        input,
+        textarea {
+            width: 95%;
+            padding: 8px;
+            border: 1px solid #64b5f6;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        textarea {
+            resize: none;
+            height: 80px;
+        }
+
+        button {
+            background-color: #1976d2;
+            color: white;
+            border: none;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background-color: #0d47a1;
+        }
+
+        article {
+            width: 300px;
+            border: 2px solid black;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Añadir MOBA</h1>
+    <form action="" method="POST">
+        Nombre: <input type="text" name="nombre" /> <br>
+        Ruta Imagen: <input type="text" name="imagen"> <br>
+        Descripcion: <textarea name="desc" id=""></textarea>
+    </form>
+
+    <button id="enviar">Enviar Datos</button>
+    <button id="obtener">Obtener Datos</button>
+    
+    <secion id="salida"></secion>
+    
+</body>
+
+</html>
