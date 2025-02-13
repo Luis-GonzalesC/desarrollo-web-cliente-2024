@@ -1,0 +1,49 @@
+body{
+    background-color: #0dd3ff;
+}
+section{
+    width: 75%;
+    margin: 1em auto;
+    border-radius: 15px;
+    padding: .75em;
+    border: 3px solid #1c79c0;
+    
+
+}
+
+input[type="button"]{
+    display: block;
+    margin: .5em auto;
+    margin-bottom: 1em;;
+    font-size: 1.1em;
+    padding: .30em;
+}
+
+section div{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+}
+
+.usuario{
+    padding: .2em;
+    background-color: #0389ff;
+    width: 215px;
+    text-align: center;
+    font-size: 1.15em;
+    margin: .25em;
+    color: white;
+    border-radius: 0.75em;
+}
+
+.usuario img{
+    display: block;
+    margin: .2em auto;
+}
+
+h1{
+    text-align: center;
+    font-size: 3em;
+}
