@@ -63,6 +63,8 @@ document.addEventListener("DOMContentLoaded", ()=>{
         })
     });
 
+    //datos.result[0].name.first
+
     //FUNCION PARA AGREGAR AL ARBOL DOM EL TEXTO
     function agregandoDOM(articulo, texto){
         articulo.setAttribute("class", "usuario");//Agrego la clase usuario a cada artículo
