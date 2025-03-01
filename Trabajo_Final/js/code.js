@@ -17,7 +17,7 @@ window.onload = () =>{
     let recursos = document.querySelectorAll('.recursos .texto_recursos');
     
     //Variable del jugador
-    let tiempo_Modena = 0.25;
+    let tiempo_Moneda = 0.25;
     let jugador = {
         moneda: 0,
         piedra: 0,
@@ -57,7 +57,7 @@ window.onload = () =>{
                 setTimeout(() => {
                     boton_iniciado.parentElement.removeChild(p); 
                 }, 2000);//2000 => 2s (lo que dura mi animación creada)
-            }, (tiempo_Modena * jugador.moneda) * 1000); //convierto el tiempo a milisegundos porque setTimeout requiere milisegundos no segundos
+            }, (tiempo_Moneda * jugador.moneda) * 1000); //convierto el tiempo a milisegundos porque setTimeout requiere milisegundos no segundos
         }, false)
 
     edificio.addEventListener("click", 
