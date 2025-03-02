@@ -147,11 +147,11 @@ window.onload = () =>{
 
             contadorMonedas.textContent = jugador.moneda; //Actualizo la cantidad de monedas
             recursos[0].textContent = "Piedra Estelar: " + jugador.piedra; //Actualizo la cantidad de piedras
-            recursos[1].textContent = " Madera de la Familia Joestar: " + jugador.madera;
+            recursos[1].textContent = "Madera de la Familia Joestar: " + jugador.madera;
 
             array_eficios[5].disabled = false;
             array_eficios[3].disabled = true;
-            alert("Se ha desbloqueado un nuevo edificio");
+            alert("Se ha desbloqueado un nuevo edificio, Los Establos de Hold Horse");
 
             timer = setInterval(() => {
                 jugador.trigo += 1;
@@ -161,14 +161,22 @@ window.onload = () =>{
         } else alert("Se necesitan 8 monedas, 9 piedras y 5 de madera para poder construir la granja");
     }, false)
     
+    /*==========================EDIFICIO DEL MERCADO==========================*/
     //Evento para el Mercado => Mercado de las Sombras (costo: 8 de piedra y 9 de madera)
     let boton_mercado = document.querySelector(".mercado");
     let panel_mercado = document.querySelectorAll(".panel_mercado > input");
 
     array_eficios[4].addEventListener("click", ()=>{
-        //if(jugador.piedra >= 8 && jugador.madera >= 9){
+        if(jugador.piedra >= 8 && jugador.madera >= 9){
+            //Restando los valores para construir el mercado
+            jugador.piedra -= 8;
+            jugador.madera -= 9;
+            recursos[0].textContent = "Piedra Estelar: " + jugador.piedra; //Muestro la pieda en pantalla
+            recursos[1].textContent = "Madera de la Familia Joestar: " + jugador.madera; //Muestro la madera en pantalla
+            array_eficios[4].disabled = true;
+            alert("Se ha construido el Mercado");
             boton_mercado.setAttribute("style", "display: block");
-        //}else alert("Se necesitan 8 piedras y 9 de madera para poder construir el Mercado");
+        }else alert("Se necesitan 8 piedras y 9 de madera para poder construir el Mercado");
     }, false)
 
     boton_mercado.addEventListener("click", ()=>{
@@ -179,15 +187,47 @@ window.onload = () =>{
     //LLamo a mi función para cerrar el panel de los edicios
     cerrarPaneles(cerrar_panel[1], "panel_mercado");
 
+    //Comprando CUERO en el mercado
     panel_mercado[1].addEventListener("click", ()=>{
-        let respuesta = confirm("Comprar cuero vale 3 monedas. ¿Esta segur@?");
-        if(respuesta && jugador.moneda >= 3){
-            jugador.moneda -= 3; //Le quito al jugador 3 monedas
-            contadorMonedas.textContent = jugador.moneda; //Actualizo la cantidad de monedas
-            jugador.cuero++; //Le agrego el cuero obtenido
-            recursos[4].textContent = " Alma de Stand: " + jugador.cuero; //Muestro el cuero en pantalla
-        } else alert("No cuenta con 3 monedas para obtener 1 de Alma de Stand(cuero)")
+        let respuesta = confirm("Comprar Alma de Stand(cuero) vale 3 monedas. ¿Esta segur@?");
+        if(respuesta){
+            if(jugador.moneda >= 3){
+                jugador.moneda -= 3; //Le quito al jugador 3 monedas
+                contadorMonedas.textContent = jugador.moneda; //Actualizo la cantidad de monedas
+                jugador.cuero++; //Le agrego el cuero obtenido
+                recursos[4].textContent = " Alma de Stand: " + jugador.cuero; //Muestro el cuero en pantalla
+            } else alert("No cuenta con 3 monedas para obtener 1 de Alma de Stand(cuero)");
+        } else alert("Regrese pronto");
+        
     }, false);
+
+    //Comprando PIEDRA en el mercado
+    panel_mercado[2].addEventListener("click", ()=>{
+        let respuesta = confirm("Comprar PIEDRA vale 1 monedas. ¿Esta segur@?");
+        if(respuesta){
+            if(jugador.moneda >= 1){
+                jugador.moneda -= 1; //Le quito al jugador 3 monedas
+                contadorMonedas.textContent = jugador.moneda; //Actualizo la cantidad de monedas
+                jugador.piedra++; //Le agrego la piedra obtenido
+                recursos[0].textContent = "Piedra Estelar: " + jugador.piedra; //Muestro la piedra en pantalla
+            } else alert("No cuenta con 1 moneda para obtener 1 de Piedra Estelar");
+        } else alert("Regrese pronto");
+    }, false);
+
+    //Comprando MADERA en el mercado
+    panel_mercado[3].addEventListener("click", ()=>{
+        let respuesta = confirm("Comprar MADERA vale 1 monedas. ¿Esta segur@?");
+        if(respuesta){
+            if(respuesta && jugador.moneda >= 1){
+                jugador.moneda -= 1; //Le quito al jugador 3 monedas
+                contadorMonedas.textContent = jugador.moneda; //Actualizo la cantidad de monedas
+                jugador.madera++; //Le agrego la madera obtenido
+                recursos[1].textContent = "Madera de la Familia Joestar: " + jugador.madera; //Muestro la madera en pantalla
+            } else alert("No cuenta con 1 moneda para obtener 1 de Madera de la Familia Joestar");
+        } else alert("Regrese pronto");
+        
+    }, false);
+    /*========================================================================*/
 
 
     //==============TODAS LAS FUNCIONES NECESARIAS PARA LA CORRECTA EJECUCIÓN DEL CÓDIGO==============\\
