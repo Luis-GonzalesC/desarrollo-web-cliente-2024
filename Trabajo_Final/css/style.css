@@ -170,6 +170,38 @@ body{
     color:white;
 }
 
+
+/*Estilos para la cabaña de trabajadores*/
+.cabaña{
+    display: none;
+    position: absolute;
+    left: 80.6rem;
+    top: 18rem;
+    animation: mover_cabaña 2s;
+    background-color: rgba(0, 0, 0, 0.4);
+    text-align: center;
+    padding: 5px;
+    margin-top: 7px;
+    border-radius: 10px;
+}
+.cabaña:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 4px 15px rgb(173, 156, 156)
+}
+
+#texto_cabaña{
+    color: white;
+}
+
+@keyframes mover_cabaña {
+    from{
+        transform: translateX(200%);
+    }
+    to{
+        transform: translateX(0%);
+    }
+}
+
 /*Diseño completamente responsivo*/
 @media (max-width: 576px){
     body{

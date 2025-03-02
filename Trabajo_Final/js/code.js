@@ -26,7 +26,8 @@ window.onload = () =>{
         trigo: 0,
         cuero: 0,
         caballos: 0,
-        pan:0
+        pan:0,
+        cabañas:0
     };
 
     //Variables para generar trigo y establecer un temporizador
@@ -95,6 +96,7 @@ window.onload = () =>{
         } else alert("No tienes suficientes monedas para comprar El santuario de los Stand.");
         }, false);
 
+    //Funcionalidad del boton de recoger
     boton_recoger.addEventListener("click", 
         ()=>{
             //Se deshabilita el boton por un tiempo
@@ -104,20 +106,20 @@ window.onload = () =>{
                 background-color: grey;
                 opacity: 0.5;`);
             //Valor aleatorio entre piedra y madera por el número de trabajadores
-            let piedra_random = Math.floor(Math.random() * (jugador.trabajadores + 2));
-            let madera_random = Math.floor(Math.random() * (jugador.trabajadores + 2));
+            let piedra_random = Math.floor(Math.random() * (jugador.trabajadores + 2) + 1);
+            let madera_random = Math.floor(Math.random() * (jugador.trabajadores + 2) + 1);
             jugador.piedra += piedra_random;
             jugador.madera += madera_random;
             alert(`Obtuviste ${piedra_random} de piedra y ${madera_random} de madera`);
             
             recursos[0].textContent = "Piedra Estelar: " + jugador.piedra;
             recursos[1].textContent = "Madera de la Familia Joestar: " + jugador.madera;
-            setTimeout(() => {
+            setTimeout(() => {//Ejecuta la función luego del tiempo indicado
                 boton_recoger.disabled = false;
                 //Vuelvo a poner el boton en su forma original
-                boton_recoger.id = "btn_recoger";
-                boton_recoger.setAttribute("style", "display: block");
-            }, (0 - jugador.trabajadores) * 1000);
+                boton_recoger.id = "btn_recoger"; //Vuelvo a reasignar la misma clase
+                boton_recoger.setAttribute("style", "display: block"); //Vuelvo a poner la clase en block
+            }, (45 - jugador.trabajadores) * 1000);
         }, false)
 
     //Evento para la Cabaña => Casa del usuario del Stand (costo: 6 monedas y 6 piedras)
@@ -126,6 +128,10 @@ window.onload = () =>{
     array_eficios[2].addEventListener("click", 
         ()=>{
             if(jugador.moneda >= min_monedas && jugador.piedra >= min_piedras){//Costo mínimo
+                document.querySelector(".cabaña").setAttribute("style", "display:block");//Muestro en pantalla la cabaña que se crea
+                jugador.cabañas++;//Le sumo al contador de cabañas creadas
+                document.querySelector("#texto_cabaña").textContent = "Cabaña: " + jugador.cabañas;//Muestro en pantalla el número de cabañas que se crean
+                
                 //Le quitamos la cantidad de monedas o piedras del coste por cada cabaña
                 jugador.moneda -= min_monedas;
                 jugador.piedra -= min_piedras;
