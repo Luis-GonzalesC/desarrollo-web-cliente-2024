@@ -202,6 +202,38 @@ body{
     }
 }
 
+/*CSS PARA EL MERCADO*/
+.mercado{
+    display: none;
+    margin-top: 20%;
+
+}
+
+.panel_mercado{
+    display: none;
+    position: absolute;
+    text-align: center;
+    width: 20%;
+    margin: 3%;
+    margin-top: 30%;
+    background-color: #0d0b0b;
+    padding: 1%;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+    border-top-right-radius: 50px;
+    right: 19.7%;
+}
+.panel_mercado input{
+    width: 80%;
+    margin-left: 20%;
+    border-radius: 100px;
+    margin: 1%;
+    cursor: pointer;
+}
+.panel_mercado input:hover{
+    scale: 1.1;
+}
+
 /*Diseño completamente responsivo*/
 @media (max-width: 576px){
     body{
