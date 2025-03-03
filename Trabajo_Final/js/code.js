@@ -163,7 +163,7 @@ document.addEventListener("DOMContentLoaded",() =>{
                 jugador.trigo += 1;
                 recursos[3].textContent = "Trigo de los Joestar: " + jugador.trigo;
                 alert("Obtuviste 1 de trigo");
-            }, 20000);
+            }, /*20000*/ 5000);
         } else alert("Se necesitan 8 monedas, 9 piedras y 5 de madera para poder construir la granja");
     }, false)
     
@@ -259,19 +259,28 @@ document.addEventListener("DOMContentLoaded",() =>{
         
     }, false);
 
-    //Permite criar caballos por 2 de cuero y 5 trigos
+    //Permite criar caballos por 2 de cuero y 10 trigos
     boton_establo.addEventListener("click", ()=>{
-        if(jugador.cuero >= 2 && jugador.trigo >= 5){
+        if(jugador.cuero >= 2 && jugador.trigo >= 10){
             //Restando los recursos para obtener 1 caballo
             jugador.cuero -= 2;
-            jugador.trigo -= 5;
+            jugador.trigo -= 10;
             recursos[3].textContent = "Trigo de los Joestar: " + jugador.trigo; //Actualizo la madera en pantalla
             recursos[4].textContent = " Alma de Stand: " + jugador.cuero; //Actualizo el cuero en pantalla
 
             jugador.caballos++;
             recursos[5].textContent = "Caballos de Hol Horse: " + jugador.caballos; //Actualizo los caballos en pantalla
-        }else alert("Se necesitan 2 de cuero y 5 trigos para obtener un caballo");
+        }else alert("Se necesitan 2 de Alma de Stand y 10 trigos para obtener un caballo");
     }, false);
+    /*========================================================================*/
+
+    /*========================EDIFICIO DEL MOLINO========================*/
+    //Evento para el molino => El Molino de la Fuerza (costo: 5 monedas, 8 de piedra y 3 caballos)
+    array_eficios[6].addEventListener("click", ()=>{
+        if(jugador.moneda >= 5 && jugador.piedra >= 8 && jugador.caballos >=3){
+            //SE PUEDE COMPRAR
+        }else alert("Se necesitan 5 monedas, 8 piedras y 3 caballos para poder comprar el Molino");
+    }, false);;
 
     //==============TODAS LAS FUNCIONES NECESARIAS PARA LA CORRECTA EJECUCIÓN DEL CÓDIGO==============\\
     function abrirPaneles(clase){
