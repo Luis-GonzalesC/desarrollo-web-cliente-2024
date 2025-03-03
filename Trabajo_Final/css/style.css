@@ -242,7 +242,6 @@ body{
 /*CSS PARA LOS ESTABLOS*/
 .establos{
     display: none;
-    margin-top: 20%;
 }
 .criar_caballo{
     margin: 10px;
@@ -281,6 +280,42 @@ body{
 .pan:hover {
     background-color: #b1bc51;
     color: black;
+}
+/*CSS PARA LAS ALERTAS*/
+.fondo{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 999;
+}
+.alerta{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    padding: 20px;
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    text-align: center;
+    margin-left: -150px;
+    margin-top: -50px;
+    width: 300px;
+}
+
+.cerrarBtn{
+    margin-top: 10px;
+    padding: 5px 10px;
+    border: none;
+    background-color: #f5c6cb;
+    color: #721c24;
+    border-radius: 5px;
+    cursor: pointer;
 }
 /*Diseño completamente responsivo*/
 @media (max-width: 576px){

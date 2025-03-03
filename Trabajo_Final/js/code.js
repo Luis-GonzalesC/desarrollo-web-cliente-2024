@@ -161,10 +161,11 @@ document.addEventListener("DOMContentLoaded",() =>{
             timer = setInterval(() => {
                 jugador.trigo += 1;
                 recursos[3].textContent = "Trigo de los Joestar: " + jugador.trigo;
-                alert("Obtuviste 1 de trigo");
-            }, /*20000*/ 3000);
+                animacionSumar(recursos[3], 250, 300);
+            }, /*20000*/ 2000);
         } else alert("Se necesitan 8 monedas, 9 piedras y 5 de madera para poder construir la granja");
     }, false)
+
     
     /*==========================EDIFICIO DEL MERCADO==========================*/
     //Evento para el Mercado => Mercado de las Sombras (costo: 8 de piedra y 9 de madera)
@@ -333,10 +334,57 @@ document.addEventListener("DOMContentLoaded",() =>{
 
     /*========================EDIFICIO DE LA TABERNA========================*/
     //Evento para la taberna => El salón de los Stand (costo: 10 monedas, 7 de madera, 9 de piedra, 3 caballos y 10 de pan)
-    array_eficios[7].addEventListener("click", ()=>{
-        alert("click");
-    }, false);
+    /*array_eficios[7].addEventListener("click", ()=>{
+        if(jugador.moneda >= 10 && jugador.madera >= 7 && jugador.piedra >= 9 && jugador.caballos >= 3 && jugador.pan >= 10){
 
+        }
+    }, false);*/
+
+    array_eficios[7].addEventListener("click", () => {
+        if (
+            jugador.moneda >= 10 &&
+            jugador.madera >= 7 &&
+            jugador.piedra >= 9 &&
+            jugador.caballos >= 3 &&
+            jugador.pan >= 10
+        ) {
+            mostrarAlertaPersonalizada("¡Felicidades! El juego ha terminado y has ganado 🎉");
+        }
+    }, false);
+    
+    // Función para crear el alert personalizado con fondo negro
+    array_eficios[7].addEventListener("click", () => {
+        if (jugador.moneda >= 10 && jugador.madera >= 7 && jugador.piedra >= 9 && jugador.caballos >= 3 && jugador.pan >= 10) {
+            mostrarAlertaPersonalizada("¡Felicidades! El juego ha terminado y has ganado 🎉");
+        }
+    }, false);
+    
+    // Función para crear el alert personalizado con fondo negro
+    function mostrarAlertaPersonalizada(mensaje) {
+        // Crear un fondo negro
+        let fondo = document.createElement("div");
+        fondo.setAttribute("class", "fondo");
+    
+        // Crear contenedor del alert
+        let alerta = document.createElement("div");
+        alerta.setAttribute("class", "alerta");
+        alerta.textContent = mensaje;
+    
+        // Botón para cerrar el alert
+        const botonCerrar = document.createElement("button");
+        botonCerrar.textContent = "Cerrar";
+        botonCerrar.setAttribute("class", "cerrarBtn");
+    
+        // Evento para cerrar el alert y el fondo negro
+        botonCerrar.addEventListener("click", () => {
+            document.body.removeChild(alerta); // Elimina la alerta
+            document.body.removeChild(fondo); // Elimina el fondo negro
+        });
+    
+        alerta.appendChild(botonCerrar);
+        document.body.appendChild(fondo); // Agregar el fondo negro
+        document.body.appendChild(alerta); // Agregar la alerta
+    }
 
     //==============TODAS LAS FUNCIONES NECESARIAS PARA LA CORRECTA EJECUCIÓN DEL CÓDIGO==============\\
     function abrirPaneles(clase){
@@ -350,5 +398,23 @@ document.addEventListener("DOMContentLoaded",() =>{
             let panel = document.getElementsByClassName(clase)[0];
             panel.setAttribute("style", "display: none");
         }, false)
+    }
+
+    // Función para manejar la animación
+    function animacionSumar(elemento, top, left) {
+        let p = document.createElement("p"); //Creación del elemento p
+        p.appendChild(document.createTextNode("+1"));
+        p.setAttribute("class", "sumar"); //Asignar clase
+        p.setAttribute("style", `
+            top: ${top}px; 
+            left: ${left}px;
+        `);
+
+        elemento.parentElement.appendChild(p); //Agregar p al padre del elemento
+
+        //Eliminar el elemento p después de la animación
+        setTimeout(() => {
+            elemento.parentElement.removeChild(p);
+        }, 2000); //Duración de la animación
     }
 });
