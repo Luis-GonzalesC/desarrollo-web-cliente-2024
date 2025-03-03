@@ -175,7 +175,7 @@ body{
 .cabaña{
     display: none;
     position: absolute;
-    left: 80.6rem;
+    left: 92rem;
     top: 18rem;
     animation: mover_cabaña 2s;
     background-color: rgba(0, 0, 0, 0.4);
@@ -206,7 +206,6 @@ body{
 .mercado{
     display: none;
     margin-top: 20%;
-
 }
 
 .panel_mercado{
@@ -215,7 +214,7 @@ body{
     text-align: center;
     width: 20%;
     margin: 3%;
-    margin-top: 30%;
+    margin-top: 25%;
     background-color: #0d0b0b;
     padding: 1%;
     border-bottom-left-radius: 50px;
@@ -232,6 +231,12 @@ body{
 }
 .panel_mercado input:hover{
     scale: 1.1;
+}
+
+/*CSS PARA LOS ESTABLOS*/
+.establos{
+    display: none;
+    margin-top: 20%;
 }
 
 /*Diseño completamente responsivo*/

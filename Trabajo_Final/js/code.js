@@ -1,4 +1,4 @@
-window.onload = () =>{
+document.addEventListener("DOMContentLoaded",() =>{
     let boton_iniciado = document.getElementsByTagName("input")[0]; //Primer boton en pantalla
     let contadorMonedas = document.getElementById("contadorMonedas");//Monedas en el HTML
     let edificio =  document.getElementsByTagName("input")[1];; //Boton de los edificios
@@ -60,8 +60,8 @@ window.onload = () =>{
         }, (tiempo_Moneda * jugador.moneda) * 1000); //convierto el tiempo a milisegundos porque setTimeout requiere milisegundos no segundos
     }, false)
 
+    //Cuando se haga click que se habilite el panel con los edificios
     edificio.addEventListener("click", ()=>{
-        //Cuando se haga click que se habilite una lista con los edificios
         abrirPaneles("panel_edificio");
     }, false)
 
@@ -69,6 +69,7 @@ window.onload = () =>{
     cerrarPaneles(cerrar_panel[0], "panel_edificio");
     
     //======================CONSTRUYENDO LOS EDIFICIOS======================//
+    /*=========================EDIFICIO DEL ALMACEN=========================*/
     //Evento para el Almacén => El santuario de los Stand (costo: 2 monedas)
     array_eficios[1].addEventListener("click", () => {
         if (jugador.moneda >= 2) {
@@ -81,6 +82,9 @@ window.onload = () =>{
             array_eficios[2].disabled = false;
             array_eficios[3].disabled = false;
             array_eficios[4].disabled = false;
+
+            //Bloqueando el Almacen
+            array_eficios[1].disabled = true;
 
             alert("¡Has construido un Almacén!");
             alert("Están disponibles 3 nuevos edificios");
@@ -113,6 +117,7 @@ window.onload = () =>{
         }, /*(45 - jugador.trabajadores) **/ 1000);
     }, false)
 
+    /*==========================EDIFICIO DE LA CABAÑA==========================*/
     //Evento para la Cabaña => Casa del usuario del Stand (costo: 6 monedas y 6 piedras)
     let min_monedas = 6;
     let min_piedras = 6;
@@ -136,7 +141,8 @@ window.onload = () =>{
             alert("Se acaban de agregar 5 trabajadores");
         } else alert(`Como mínimo se necesitan ${min_monedas} monedas y ${min_piedras} piedras`);
     }, false)
-    
+
+    /*==========================EDIFICIO DE LA GRANJA==========================*/
     //Evento para la Granja => La Granja de la Fuerza (costo: 8 monedas, 9 piedras y 5 de madera)
     array_eficios[3].addEventListener("click", ()=>{
         if(jugador.moneda >= 8 && jugador.piedra >= 9 && jugador.madera >= 5){
@@ -196,6 +202,7 @@ window.onload = () =>{
                 contadorMonedas.textContent = jugador.moneda; //Actualizo la cantidad de monedas
                 jugador.cuero++; //Le agrego el cuero obtenido
                 recursos[4].textContent = " Alma de Stand: " + jugador.cuero; //Muestro el cuero en pantalla
+                alert("Se ha obtenido una Alma de Stand");
             } else alert("No cuenta con 3 monedas para obtener 1 de Alma de Stand(cuero)");
         } else alert("Regrese pronto");
         
@@ -210,6 +217,7 @@ window.onload = () =>{
                 contadorMonedas.textContent = jugador.moneda; //Actualizo la cantidad de monedas
                 jugador.piedra++; //Le agrego la piedra obtenido
                 recursos[0].textContent = "Piedra Estelar: " + jugador.piedra; //Muestro la piedra en pantalla
+                alert("Se ha obtenido 1 Piedra Estelar");
             } else alert("No cuenta con 1 moneda para obtener 1 de Piedra Estelar");
         } else alert("Regrese pronto");
     }, false);
@@ -223,12 +231,47 @@ window.onload = () =>{
                 contadorMonedas.textContent = jugador.moneda; //Actualizo la cantidad de monedas
                 jugador.madera++; //Le agrego la madera obtenido
                 recursos[1].textContent = "Madera de la Familia Joestar: " + jugador.madera; //Muestro la madera en pantalla
+                alert("Se ha obtenido 1 Madera de la Familia Joestar");
             } else alert("No cuenta con 1 moneda para obtener 1 de Madera de la Familia Joestar");
         } else alert("Regrese pronto");
         
     }, false);
     /*========================================================================*/
 
+    /*========================EDIFICIO DE LOS ESTABLOS========================*/
+    //Evento para los establos => Los Establos de Hold Horse (costo: 8 monedas, 10 de madera y 5 de trigo)
+    let boton_establo = document.querySelector(".establos");
+    array_eficios[5].addEventListener("click", () =>{
+        if(jugador.moneda >= 8 && jugador.madera >= 10 && jugador.trigo >= 5){
+            //Restando lo valores cuando se desbloquea el edificio
+            jugador.moneda -= 8;
+            jugador.madera -= 10;
+            jugador.trigo -= 5;
+            contadorMonedas.textContent = jugador.moneda; //Actualizamos la cantidad de monedas
+            recursos[1].textContent = "Madera de la Familia Joestar: " + jugador.madera; //Actualizo la madera en pantalla
+            recursos[3].textContent = "Trigo de los Joestar: " + jugador.trigo; //Actualizo la madera en pantalla
+
+            boton_establo.setAttribute("style", "display: block");//Mostrando el boton al crear los establos
+            array_eficios[5].disabled = true;//Desactivando el edificio del establo
+            array_eficios[6].disabled = false;//Activando el nuevo edificio (MOLINO)
+            alert("Se ha desbloqueado un nuevo edicio (El molino de la Fuerza)");
+        }else alert("Como mínimo se necesitan 8 monedas, 10 de madera y 5 de trigo");
+        
+    }, false);
+
+    //Permite criar caballos por 2 de cuero y 5 trigos
+    boton_establo.addEventListener("click", ()=>{
+        if(jugador.cuero >= 2 && jugador.trigo >= 5){
+            //Restando los recursos para obtener 1 caballo
+            jugador.cuero -= 2;
+            jugador.trigo -= 5;
+            recursos[3].textContent = "Trigo de los Joestar: " + jugador.trigo; //Actualizo la madera en pantalla
+            recursos[4].textContent = " Alma de Stand: " + jugador.cuero; //Actualizo el cuero en pantalla
+
+            jugador.caballos++;
+            recursos[5].textContent = "Caballos de Hol Horse: " + jugador.caballos; //Actualizo los caballos en pantalla
+        }else alert("Se necesitan 2 de cuero y 5 trigos para obtener un caballo");
+    }, false);
 
     //==============TODAS LAS FUNCIONES NECESARIAS PARA LA CORRECTA EJECUCIÓN DEL CÓDIGO==============\\
     function abrirPaneles(clase){
@@ -243,4 +286,4 @@ window.onload = () =>{
             panel.setAttribute("style", "display: none");
         }, false)
     }
-}
+});
