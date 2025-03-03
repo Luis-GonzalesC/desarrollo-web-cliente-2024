@@ -233,12 +233,55 @@ body{
     scale: 1.1;
 }
 
+#mercado_pan{
+    display: none;
+    margin-left: 35px;
+
+}
+
 /*CSS PARA LOS ESTABLOS*/
 .establos{
     display: none;
     margin-top: 20%;
 }
+.criar_caballo{
+    margin: 10px;
+    width: 15rem;
+    height: 6rem;
+    background-color: #000000;
+    border: none;
+    border-radius: 25px;
+    color:white;
+    font-weight: bold;
+    font-size: 37px;
+    border: 5px solid white;
+}
+.criar_caballo:hover {
+    background-color: #b1bc51;
+    color: black;
+}
 
+/*CSS PARA EL MOLINO*/
+.molino{
+    display: none;
+}
+.pan{
+    margin: 10px;
+    width: 15rem;
+    height: 6rem;
+    background-color: #000000;
+    border: none;
+    border-radius: 25px;
+    color:white;
+    font-weight: bold;
+    font-size: 39px;
+    border: 5px solid white;
+}
+
+.pan:hover {
+    background-color: #b1bc51;
+    color: black;
+}
 /*Diseño completamente responsivo*/
 @media (max-width: 576px){
     body{

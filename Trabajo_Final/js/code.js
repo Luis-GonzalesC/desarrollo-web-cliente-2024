@@ -13,6 +13,9 @@ document.addEventListener("DOMContentLoaded",() =>{
     for (let edificios of array_eficios) {
         edificios.disabled = true;
     }
+    //Por defecto quiero el almacen esté activo
+    array_eficios[0].disabled = false;
+    array_eficios[1].disabled = false;
     //cogiendo los recursos del html
     let recursos = document.querySelectorAll('.recursos .texto_recursos');
     
@@ -47,13 +50,9 @@ document.addEventListener("DOMContentLoaded",() =>{
             `);
             boton_iniciado.parentElement.appendChild(p); //Agregando el elemento p al padre del boton
             jugador.moneda++;//Sumandole a la moneda del jugador
-            contadorMonedas.textContent = jugador.moneda;//Agreganado texto
-            if(jugador.moneda >= 2){
-                edificio.setAttribute("style", "display: block");
-                //Con 2 monedas se desbloquea directamente edificio
-                array_eficios[0].disabled = false;
-                array_eficios[1].disabled = false;
-            }                //Eliminando el elemento p luego de la animación
+            contadorMonedas.textContent = jugador.moneda;//Agregando texto
+            if(jugador.moneda >= 2) edificio.setAttribute("style", "display: block");
+            //Eliminando el elemento p luego de la animación
             setTimeout(() => {
                 boton_iniciado.parentElement.removeChild(p); 
             }, 2000);//2000 => 2s (lo que dura mi animación creada)
@@ -163,7 +162,7 @@ document.addEventListener("DOMContentLoaded",() =>{
                 jugador.trigo += 1;
                 recursos[3].textContent = "Trigo de los Joestar: " + jugador.trigo;
                 alert("Obtuviste 1 de trigo");
-            }, /*20000*/ 5000);
+            }, /*20000*/ 3000);
         } else alert("Se necesitan 8 monedas, 9 piedras y 5 de madera para poder construir la granja");
     }, false)
     
@@ -177,6 +176,7 @@ document.addEventListener("DOMContentLoaded",() =>{
             //Restando los valores para construir el mercado
             jugador.piedra -= 8;
             jugador.madera -= 9;
+            //Actualizando los recursos
             recursos[0].textContent = "Piedra Estelar: " + jugador.piedra; //Muestro la pieda en pantalla
             recursos[1].textContent = "Madera de la Familia Joestar: " + jugador.madera; //Muestro la madera en pantalla
             array_eficios[4].disabled = true;
@@ -226,7 +226,7 @@ document.addEventListener("DOMContentLoaded",() =>{
     panel_mercado[3].addEventListener("click", ()=>{
         let respuesta = confirm("Comprar MADERA vale 1 monedas. ¿Esta segur@?");
         if(respuesta){
-            if(respuesta && jugador.moneda >= 1){
+            if(jugador.moneda >= 1){
                 jugador.moneda -= 1; //Le quito al jugador 3 monedas
                 contadorMonedas.textContent = jugador.moneda; //Actualizo la cantidad de monedas
                 jugador.madera++; //Le agrego la madera obtenido
@@ -234,24 +234,38 @@ document.addEventListener("DOMContentLoaded",() =>{
                 alert("Se ha obtenido 1 Madera de la Familia Joestar");
             } else alert("No cuenta con 1 moneda para obtener 1 de Madera de la Familia Joestar");
         } else alert("Regrese pronto");
-        
+    }, false);
+
+    //Comprando PAN en el mercado
+    panel_mercado[4].addEventListener("click", ()=>{
+        let respuesta = confirm("Comprar PAN vale 15 monedas. ¿Esta segur@?");
+        if(respuesta){
+            if(jugador.moneda >= 15){
+                jugador.moneda -= 15; //Le quito al jugador 3 monedas
+                contadorMonedas.textContent = jugador.moneda; //Actualizo la cantidad de monedas
+                jugador.pan++; //Le agrego la madera obtenido
+                recursos[6].textContent = "Pan de los Joestar: " + jugador.pan; //Actualizo los caballos en pantalla
+                alert("Se ha obtenido un pan de los Joestar");
+            } else alert("No cuenta con 15 monedas para obtener 1 de pan");
+        } else alert("Regrese pronto");
     }, false);
     /*========================================================================*/
 
     /*========================EDIFICIO DE LOS ESTABLOS========================*/
     //Evento para los establos => Los Establos de Hold Horse (costo: 8 monedas, 10 de madera y 5 de trigo)
-    let boton_establo = document.querySelector(".establos");
+    let boton_criarCaballos = document.querySelector(".establos");
     array_eficios[5].addEventListener("click", () =>{
         if(jugador.moneda >= 8 && jugador.madera >= 10 && jugador.trigo >= 5){
             //Restando lo valores cuando se desbloquea el edificio
             jugador.moneda -= 8;
             jugador.madera -= 10;
             jugador.trigo -= 5;
+            //Actualizando los recursos en pantalla
             contadorMonedas.textContent = jugador.moneda; //Actualizamos la cantidad de monedas
             recursos[1].textContent = "Madera de la Familia Joestar: " + jugador.madera; //Actualizo la madera en pantalla
             recursos[3].textContent = "Trigo de los Joestar: " + jugador.trigo; //Actualizo la madera en pantalla
 
-            boton_establo.setAttribute("style", "display: block");//Mostrando el boton al crear los establos
+            boton_criarCaballos.setAttribute("style", "display: block");//Mostrando el boton al crear los establos
             array_eficios[5].disabled = true;//Desactivando el edificio del establo
             array_eficios[6].disabled = false;//Activando el nuevo edificio (MOLINO)
             alert("Se ha desbloqueado un nuevo edicio (El molino de la Fuerza)");
@@ -260,14 +274,15 @@ document.addEventListener("DOMContentLoaded",() =>{
     }, false);
 
     //Permite criar caballos por 2 de cuero y 10 trigos
-    boton_establo.addEventListener("click", ()=>{
+    boton_criarCaballos.addEventListener("click", ()=>{
         if(jugador.cuero >= 2 && jugador.trigo >= 10){
             //Restando los recursos para obtener 1 caballo
             jugador.cuero -= 2;
             jugador.trigo -= 10;
+            //Actualizando los valores en pantalla
             recursos[3].textContent = "Trigo de los Joestar: " + jugador.trigo; //Actualizo la madera en pantalla
             recursos[4].textContent = " Alma de Stand: " + jugador.cuero; //Actualizo el cuero en pantalla
-
+            alert("Se ha obtenido un Caballo");
             jugador.caballos++;
             recursos[5].textContent = "Caballos de Hol Horse: " + jugador.caballos; //Actualizo los caballos en pantalla
         }else alert("Se necesitan 2 de Alma de Stand y 10 trigos para obtener un caballo");
@@ -275,12 +290,53 @@ document.addEventListener("DOMContentLoaded",() =>{
     /*========================================================================*/
 
     /*========================EDIFICIO DEL MOLINO========================*/
+    let boton_amasarPan= document.querySelector(".molino");
     //Evento para el molino => El Molino de la Fuerza (costo: 5 monedas, 8 de piedra y 3 caballos)
     array_eficios[6].addEventListener("click", ()=>{
         if(jugador.moneda >= 5 && jugador.piedra >= 8 && jugador.caballos >=3){
-            //SE PUEDE COMPRAR
+            //Restando los recursos para obtener el molino
+            jugador.moneda -= 5;
+            jugador.piedra -= 8;
+            jugador.caballos -= 3;
+
+            //Actualizando los valores restados en pantalla
+            contadorMonedas.textContent = jugador.moneda; //Actualizo la cantidad de monedas
+            recursos[0].textContent = "Piedra Estelar: " + jugador.piedra; //Actualizo la piedra en pantalla
+            recursos[5].textContent = "Caballos de Hol Horse: " + jugador.caballos; //Actualizo los caballos en pantalla
+
+            //Desactivando los edificios
+            array_eficios[6].disabled = true;
+            //Habilitando la taberna
+            alert("Se ha habilitado un último edificio, El salón de los Stand(Taberna)");
+            //Habilitando el Amasar pan
+            boton_amasarPan.setAttribute("style", "display:block");
+            array_eficios[7].disabled = false;
+            document.querySelector("#mercado_pan").setAttribute("style", "display:block");
+            alert("Hay un nuevo recurso a comprar en el mercado");
         }else alert("Se necesitan 5 monedas, 8 piedras y 3 caballos para poder comprar el Molino");
-    }, false);;
+    }, false);
+
+    //Evento para poder amasar el pan => (costo: 2 de trigo y min 10 trabajadores)
+    boton_amasarPan.addEventListener("click", ()=>{
+        if(jugador.trigo >= 2 && jugador.trabajadores >= 10){
+            //Restando y sumando los valores al amasar el pan
+            jugador.trigo -= 2;
+            jugador.pan++;
+            //Actualizando los recursos
+            recursos[3].textContent = "Trigo de los Joestar: " + jugador.trigo; //Actualizo la madera en pantalla
+            recursos[6].textContent = "Pan de los Joestar: " + jugador.pan; //Actualizo los caballos en pantalla
+            alert("Se ha obtenido un pan de los Joestar");
+        }else alert("Para obtener una unidad de pan son necesarias 2 de trigo y 10 trabajadores");
+        
+    }, false);
+    /*========================================================================*/
+
+    /*========================EDIFICIO DE LA TABERNA========================*/
+    //Evento para la taberna => El salón de los Stand (costo: 10 monedas, 7 de madera, 9 de piedra, 3 caballos y 10 de pan)
+    array_eficios[7].addEventListener("click", ()=>{
+        alert("click");
+    }, false);
+
 
     //==============TODAS LAS FUNCIONES NECESARIAS PARA LA CORRECTA EJECUCIÓN DEL CÓDIGO==============\\
     function abrirPaneles(clase){
