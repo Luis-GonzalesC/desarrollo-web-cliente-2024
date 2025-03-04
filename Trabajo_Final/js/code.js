@@ -358,12 +358,12 @@ document.addEventListener("DOMContentLoaded",() =>{
         let fondo = document.createElement("div");
         fondo.setAttribute("class", "fondo");
     
-        //Creo un div del alert
+        //Creo un div donde contendrá el mensaje
         let alerta = document.createElement("div");
         alerta.setAttribute("class", "alerta");
         alerta.appendChild(document.createTextNode(mensaje));
     
-        //Boton para cerrar el alert
+        //Boton para cerrar el mensaje
         let botonCerrar = document.createElement("button");
         botonCerrar.appendChild(document.createTextNode("Cerrar"));
         botonCerrar.setAttribute("class", "cerrarBtn");

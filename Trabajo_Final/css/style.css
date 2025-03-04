@@ -325,5 +325,121 @@ body{
     body{
         background-image: url("../img/fondo_movil.png");
         background-size: cover;
+        width: auto;
     }
+    .container__monedas{
+        width: 31rem;
+        height: 7rem;
+        font-size: 4rem;
+    }
+    .botones{
+        margin: 10px;
+        width: 10rem;
+        height: 4rem;
+        font-size: 30px;
+    }
+
+    .panel_edificio{
+        width: 40%;
+        margin: 3%;
+        margin-top: 50%;
+        padding: 1%;
+        border-bottom-left-radius: 50px;
+        border-bottom-right-radius: 50px;
+        border-top-right-radius: 50px;
+        right: -2%;
+    }
+    .panel_edificio input{
+        width: 85%;
+        margin-left: 20%;
+        border-radius: 100px;
+        margin: 1%;
+        cursor: pointer;
+        font-size: 13px;
+    }
+    .recursos{
+        display: none;
+        position: absolute;
+        left: 3rem;
+        top: 13rem;
+        animation: mover_cajas 2s;
+    }
+
+    #btn_recoger{
+        margin-left: auto; /* Empuja el botón hacia la derecha */
+        margin-top: -10rem;
+        width: 6rem;
+        height: 3.5rem;
+        font-size: 20px;
+        animation: mover_recoger 2s;
+    }
+
+    @keyframes mover_recoger {
+        from{
+            opacity: 0;
+            transform: translateX(100%);
+        }
+        to{
+            opacity: 1;
+            transform: translateY(0%);
+        }
+    }
+
+    .recursos{
+        display: none;
+        position: absolute;
+        left: 1rem;
+        top: 10rem;
+        width: 20%;
+        animation: mover_cajas 2s;
+    }
+    
+    @keyframes mover_cajas {
+        from{
+            transform: translateX(-100%);
+        }
+        to{
+            transform: translateX(0%);
+        }
+    }
+    /* Estilo para cada item del recurso */
+    .recurso__1, .recurso__2, .recurso__3, .recurso__4, .recurso__5, .recurso__6, .recurso__7 {
+        text-align: center;
+        background-color: rgba(0, 0, 0, 0.4);
+        padding: 5px;
+        margin-top: 7px;
+        border-radius: 10px;
+        transition: transform 0.3s ease
+    }
+    .recurso__1:hover, .recurso__2:hover, .recurso__3:hover, .recurso__4:hover, .recurso__5:hover, .recurso__6:hover, .recurso__7:hover {
+        transform: scale(1.1);
+        box-shadow: 0px 4px 15px rgb(173, 156, 156)
+    }
+    
+    .imagen_recursos{
+        width: 30px;
+        height: 30px;
+    }
+    .texto_recursos{
+        font-size: 16px;
+        color:white;
+    }
+    
+    .criar_caballo{
+        margin: 10px;
+        width: 10rem;
+        height: 4rem;
+        font-size: 22px;
+        background-color: #000000;
+        border: none;
+        border-radius: 25px;
+        color:white;
+        font-weight: bold;
+        border: 5px solid white;
+    }
+    .criar_caballo:hover {
+        background-color: #b1bc51;
+        color: black;
+    }
+    
 }
