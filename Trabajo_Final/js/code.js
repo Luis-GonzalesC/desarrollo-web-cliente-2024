@@ -4,10 +4,9 @@ document.addEventListener("DOMContentLoaded",() =>{
     let edificio =  document.getElementsByTagName("input")[1];; //Boton de los edificios
 
     let boton_recoger = document.getElementById("btn_recoger");
-    
     //Referencias al panel de los eficios
     let cerrar_panel = document.querySelectorAll("#cerrar_panel");
-    //Array de todos los edificios que hay
+    //Array de todos los edificios
     let array_eficios = document.querySelectorAll(".panel_edificio > input");
     //En un inicio todos los edificios estarán escondidos y conforme se obtenga monedas se iran desbloqueando uno a uno
     for (let edificios of array_eficios) {
@@ -33,6 +32,26 @@ document.addEventListener("DOMContentLoaded",() =>{
         cabañas:0
     };
 
+    //Array de canciones
+    let canciones = [
+        "audio/cancion1.mp3",
+        "audio/cancion2.mp3",
+        "audio/cancion3.mp3",
+        "audio/cancion4.mp3",
+        "audio/cancion5.mp3",
+    ];
+
+    let indiceCancion = 0;
+    let reproducir = new Audio(canciones[indiceCancion]);
+    reproducir.addEventListener("ended", ()=>{
+        indiceCancion = (indiceCancion + 1) % canciones.length;
+        reproducir.setAttribute("src", canciones[indiceCancion]);
+        reproducir.play();
+    }, false);
+
+    reproducir.play();//reproducir al cargar el arbol DOM
+    reproducir.volume = 0.4;
+
     //Variables para generar trigo y establecer un temporizador
     let timer;
     
@@ -52,6 +71,7 @@ document.addEventListener("DOMContentLoaded",() =>{
             jugador.moneda++;//Sumandole a la moneda del jugador
             contadorMonedas.textContent = jugador.moneda;//Agregando texto
             if(jugador.moneda >= 2) edificio.setAttribute("style", "display: block");
+            PonerSonido("audio/ora.mp3");
             //Eliminando el elemento p luego de la animación
             setTimeout(() => {
                 boton_iniciado.parentElement.removeChild(p); 
@@ -172,7 +192,7 @@ document.addEventListener("DOMContentLoaded",() =>{
                 recursos[3].textContent = "Trigo de los Joestar: " + jugador.trigo;
                 let tam = tamanioCaja(recursos[3]);//Sacando el tamaño en la caja
                 animacionSumar(recursos[3], tam.width, tam.heigth, "+1");
-            }, /*20000*/ 2000);
+            }, /*20000*/ 3000);
         } else mostrarAlertaPersonalizada("Se necesitan 8 monedas, 9 piedras y 5 de madera para poder construir la granja");
     }, false)
 
@@ -353,14 +373,16 @@ document.addEventListener("DOMContentLoaded",() =>{
         
     }, false);
     /*========================================================================*/
-
     /*========================EDIFICIO DE LA TABERNA========================*/
     //Evento para la taberna => El salón de los Stand (costo: 10 monedas, 7 de madera, 9 de piedra, 3 caballos y 10 de pan)
     array_eficios[7].addEventListener("click", () => {
-        if(jugador.moneda >= 10 && jugador.madera >= 7 && jugador.piedra >= 9 && jugador.caballos >= 3 && jugador.pan >= 10){
-            mostrarAlertaPersonalizada("¡Felicidades! El juego ha terminado y has ganado");
-            location.reload();
-        }else mostrarAlertaPersonalizada("Para construir la El salón de los Stand(taberna) es necesario 10 monedas, 7 de madera, 9 de piedra, 3 caballos y 10 de pan");
+        //if(jugador.moneda >= 10 && jugador.madera >= 7 && jugador.piedra >= 9 && jugador.caballos >= 3 && jugador.pan >= 10){
+            mostrarAlertaPersonalizada("¡Felicidades! El juego ha terminado y has ganado. La página se recargará en 3 segundos");
+            PonerSonido("audio/despedida.mp3");
+            setTimeout(() => {
+                location.reload();
+            }, 3000);//3 segundos en reiniciar
+        //}else mostrarAlertaPersonalizada("Para construir la El salón de los Stand(taberna) es necesario 10 monedas, 7 de madera, 9 de piedra, 3 caballos y 10 de pan");
     }, false);
 
     //==============TODAS LAS FUNCIONES NECESARIAS PARA LA CORRECTA EJECUCIÓN DEL CÓDIGO==============\\
@@ -380,7 +402,7 @@ document.addEventListener("DOMContentLoaded",() =>{
         botonCerrar.appendChild(document.createTextNode("Cerrar"));
         botonCerrar.setAttribute("class", "cerrarBtn");
     
-        // Evento para cerrar el alert y el fondo negro
+        //Boton para cerrar la notificación y el fondo negro
         botonCerrar.addEventListener("click", () => {
             document.body.removeChild(alerta); //Elimina la alerta
             document.body.removeChild(fondo); //Elimina el fondo negro
@@ -390,7 +412,7 @@ document.addEventListener("DOMContentLoaded",() =>{
         document.body.appendChild(fondo); //Agregar el fondo negro
         document.body.appendChild(alerta); //Agregar la alerta
     }
-    //Función que activa un panel
+    //Función que activa el panel de los edificios tanto como para el mercado
     function abrirPaneles(clase){
         let panel = document.getElementsByClassName(clase)[0];
         panel.setAttribute("style", "display: block");
@@ -403,7 +425,6 @@ document.addEventListener("DOMContentLoaded",() =>{
             panel.setAttribute("style", "display: none");
         }, false)
     }
-
     // Función para manejar la animación
     function animacionSumar(elemento, top, left, mensaje) {
         let p = document.createElement("p"); //Creación del elemento p
@@ -413,20 +434,23 @@ document.addEventListener("DOMContentLoaded",() =>{
             top: ${top}px; 
             left: ${left}px;
         `);
-
         elemento.parentElement.appendChild(p); //Agregar p al padre del elemento
-
         //Eliminar el elemento p después de la animación
         setTimeout(() => {
             elemento.parentElement.removeChild(p);
         }, 2000); //Duración de la animación
     }
-
     //Función que devuelve el ancho y largo de cada elemento para utilizarla en posición donde de haga la animación de sumar
     function tamanioCaja(elemento){
         let estilo = window.getComputedStyle(elemento);
-        let width = estilo.getPropertyValue("width");
-        let heigth = estilo.getPropertyValue("heigth");
+        let width = parseInt(estilo.getPropertyValue("width"));
+        let heigth = parseInt(estilo.getPropertyValue("heigth"));
         return {width, heigth};
+    }
+    //Función donde se crea un sonido
+    function PonerSonido(ruta){
+        let sonido = new Audio(ruta);
+        sonido.volume = 1;
+        sonido.play();
     }
 });

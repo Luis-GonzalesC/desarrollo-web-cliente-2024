@@ -40,6 +40,13 @@ body{
     font-weight: bold;
     font-size: 50px;
     border: 5px solid white;
+    transition: 300ms all ease-in-out;
+}
+/* Efecto de cambio de color al pasar el ratón sobre el botón */
+.botones:hover {
+    background-color: #b1bc51;
+    color: black;
+    scale: 1.02;
 }
 
 /*Codigo CSS para los +1 que iran apareciendo en pantalla*/
@@ -62,12 +69,6 @@ body{
         transform: translateY(-150%);
         opacity: 0;
     }
-}
-
-/* Efecto de cambio de color al pasar el ratón sobre el botón */
-.botones:hover {
-    background-color: #b1bc51;
-    color: black;
 }
 
 /*CSS DEL PANEL CUANDO LE DAMOS AL BOTON DE EDIFICIO*/
@@ -252,7 +253,7 @@ body{
     border-radius: 25px;
     color:white;
     font-weight: bold;
-    font-size: 37px;
+    font-size: 34px;
     border: 5px solid white;
 }
 .criar_caballo:hover {
@@ -281,14 +282,15 @@ body{
     background-color: #b1bc51;
     color: black;
 }
+
 /*CSS PARA LAS ALERTAS*/
 .fondo{
-    position: fixed;
+    position: fixed; /*posicionar un elemento de manera fija respecto a la ventana del navegador */
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.5);
     z-index: 999;
 }
 .alerta{
@@ -296,16 +298,18 @@ body{
     top: 50%;
     left: 50%;
     padding: 20px;
-    background-color: #f8d7da;
-    color: #721c24;
-    border: 1px solid #f3c8cc;
+    background-color: #fff3e6;
+    color: #4e4b47;
+    border: 1px solid #f2c2a4;
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
     z-index: 1000;
     text-align: center;
     margin-left: -150px;
     margin-top: -50px;
     width: 300px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
 }
 
 .cerrarBtn{
@@ -315,10 +319,13 @@ body{
     margin-top: 10px;
     padding: 5px 10px;
     border: none;
-    background-color: #f5c6cb;
-    color: #721c24;
+    background-color: #a3d9a5;
+    color: #4e4b47;
     border-radius: 5px;
     cursor: pointer;
+}
+.cerrarBtn:hover {
+    background-color: #8dbf8e; /* Tono ligeramente más oscuro de verde */
 }
 /*Diseño completamente responsivo*/
 @media (max-width: 576px){
@@ -507,5 +514,4 @@ body{
         font-weight: bold;
         border: 5px solid white;
     }
-
 }
