@@ -1,6 +1,8 @@
 body{
     background-image: url("../img/Fondo_jojos.jpg");
     background-size: cover;
+    height: 100vh;
+
 }
 /*Div de contenedor de todo mi código css*/
 .container{
@@ -328,6 +330,145 @@ body{
     background-color: #8dbf8e; /* Tono ligeramente más oscuro de verde */
 }
 /*Diseño completamente responsivo*/
+@media (max-width: 993px) {
+    body {
+        background-image: url("../img/fondo_tablet.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        margin: 0;
+        height: 100vh;
+    }
+
+    .container__monedas {
+        width: 40rem;
+        height: 8rem;
+        font-size: 5rem;
+    }
+
+    /* CSS PARA TODOS LOS BOTONES */
+    .botones {
+        margin: 15px;
+        width: 12rem;
+        height: 5rem;
+        font-size: 32px;
+    }
+
+    .sumar {
+        position: absolute;
+        font-size: 28px;
+        border-radius: 40px;
+        background-color: #b1bc51;
+    }
+    /* CSS LOS PANELES DEL EDIFICIO */
+    .panel_edificio {
+        width: 30%;
+        margin: 3%;
+        margin-top: 35%;
+        padding: 2%;
+        right: 8%;
+    }
+
+    .panel_edificio input {
+        width: 90%;
+        margin-left: 10%;
+        border-radius: 50px;
+        margin: 1%;
+        cursor: pointer;
+        font-size: 15px;
+    }
+    /* CSS PARA EL BOTON DE RECOGER */
+    #btn_recoger {
+        margin-left: auto;
+        margin-top: -13rem;
+        width: 7rem;
+        height: 4rem;
+        font-size: 22px;
+    }
+    /* CSS PARA TODOS LOS RECURSOS EN PANTALLA */
+    .recursos {
+        display: none;
+        position: absolute;
+        left: 2rem;
+        top: 11rem;
+        width: 25%;
+        animation: mover_cajas 2s;
+    }
+
+    .recurso__1, .recurso__2, .recurso__3, .recurso__4, .recurso__5, .recurso__6, .recurso__7 {
+        text-align: center;
+        background-color: rgba(0, 0, 0, 0.5);
+        padding: 8px;
+        margin-top: 10px;
+        border-radius: 12px;
+    }
+
+    .recurso__1:hover, .recurso__2:hover, .recurso__3:hover, .recurso__4:hover, .recurso__5:hover, .recurso__6:hover, .recurso__7:hover {
+        transform: scale(1.15);
+        box-shadow: 0px 5px 18px rgb(173, 156, 156);
+    }
+
+    .imagen_recursos {
+        width: 35px;
+        height: 35px;
+    }
+
+    .texto_recursos {
+        font-size: 18px;
+        color: white;
+    }
+
+    /* CSS PARA EL MERCADO */
+    .mercado {
+        display: none;
+        margin-top: 20.5%;
+    }
+
+    .panel_mercado {
+        width: 30%;
+        margin: 3%;
+        margin-top: 46%;
+        padding: 2%;
+        right: 8%;
+    }
+
+    .panel_mercado input {
+        width: 90%;
+        margin-left: 10%;
+        border-radius: 50px;
+        margin: 1%;
+        cursor: pointer;
+        font-size: 18px;
+    }
+    /* CSS PARA LA CABAÑAS */
+    .cabaña {
+        display: none;
+        position: absolute;
+        left: 44.5rem;
+        top: 15rem;
+        padding: 8px;
+        margin-top: 10px;
+        border-radius: 12px;
+    }
+
+    .criar_caballo, .pan {
+        margin: 15px;
+        width: 12rem;
+        height: 5rem;
+        font-size: 24px;
+        border-radius: 25px;
+        font-weight: bold;
+        border: 5px solid white;
+    }
+
+    .criar_caballo:hover, .pan:hover {
+        background-color: #b1bc51;
+        color: black;
+    }
+}
+
+
+
 @media (max-width: 576px){
     body{
         background-image: url("../img/fondo_movil.png");
