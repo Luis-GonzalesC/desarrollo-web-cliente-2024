@@ -105,18 +105,12 @@ document.addEventListener("DOMContentLoaded",() =>{
         jugador.madera += madera_random;
         mostrarAlertaPersonalizada(`Obtuviste ${piedra_random} de piedra y ${madera_random} de madera`);
 
-        //SOLUCIONAR ESTOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
-        let estilo1 = window.getComputedStyle(recursos[0]);
-        let width1 = estilo1.getPropertyValue("width");
-        let heigth1 = estilo1.getPropertyValue("heigth");
-
-        let estilo2 = window.getComputedStyle(recursos[1]);
-        let width2 = estilo2.getPropertyValue("width");
-        let heigth2 = estilo2.getPropertyValue("heigth");
-
-
-        animacionSumar(recursos[0], width1, heigth1, "+"+piedra_random);//Que se vea la animación sumar en piedra
-        animacionSumar(recursos[1], width2, heigth2, "+"+madera_random);//Que se vea la animación sumar en madera
+        //Función que devuelve el tamaño de la caja para saber la pos en la animacion
+        let tam1 = tamanioCaja(recursos[0]);
+        let tam2 = tamanioCaja(recursos[1]);
+        //Animación de sumar en ambos valores
+        animacionSumar(recursos[0], tam1.width, tam1.heigth, "+"+piedra_random);//Que se vea la animación sumar en piedra
+        animacionSumar(recursos[1], tam2.width, tam2.heigth, "+"+madera_random);//Que se vea la animación sumar en madera
         recursos[0].textContent = "Piedra Estelar: " + jugador.piedra;
         recursos[1].textContent = "Madera de la Familia Joestar: " + jugador.madera;
         setTimeout(() => {//Ejecuta la función luego del tiempo indicado
@@ -144,7 +138,8 @@ document.addEventListener("DOMContentLoaded",() =>{
             contadorMonedas.textContent = jugador.moneda; //Actualizo la cantidad de monedas
             recursos[0].textContent = "Piedra Estelar: " + jugador.piedra; //Actualizo la cantidad de piedras
             recursos[2].textContent = "Usuarios de Stand: " + jugador.trabajadores;
-            animacionSumar(recursos[2], 160, 240, "+5");//Que se vea la animación sumar en los trabajadores
+            let tam = tamanioCaja(recursos[2]);//Sacando el tamaño en la caja
+            animacionSumar(recursos[2], tam.width, tam.heigth, "+5");//Que se vea la animación sumar en los trabajadores
 
             //Se incrementa su coste en 5 luego de crear una cabaña
             min_monedas += 5;
@@ -175,7 +170,8 @@ document.addEventListener("DOMContentLoaded",() =>{
             timer = setInterval(() => {
                 jugador.trigo += 1;
                 recursos[3].textContent = "Trigo de los Joestar: " + jugador.trigo;
-                animacionSumar(recursos[3], 250, 300, "+1");
+                let tam = tamanioCaja(recursos[3]);//Sacando el tamaño en la caja
+                animacionSumar(recursos[3], tam.width, tam.heigth, "+1");
             }, /*20000*/ 2000);
         } else mostrarAlertaPersonalizada("Se necesitan 8 monedas, 9 piedras y 5 de madera para poder construir la granja");
     }, false)
@@ -216,7 +212,8 @@ document.addEventListener("DOMContentLoaded",() =>{
                 jugador.moneda -= 3; //Le quito al jugador 3 monedas
                 contadorMonedas.textContent = jugador.moneda; //Actualizo la cantidad de monedas
                 jugador.cuero++; //Le agrego el cuero obtenido
-                animacionSumar(recursos[4], 350, 300, "+1");//Que se vea la animación sumar en los trabajadores
+                let tam = tamanioCaja(recursos[4]);//Sacando el tamaño en la caja
+                animacionSumar(recursos[4], tam.width, tam.heigth, "+1");//Que se vea la animación sumar en los trabajadores
                 recursos[4].textContent = " Alma de Stand: " + jugador.cuero; //Muestro el cuero en pantalla
                 mostrarAlertaPersonalizada("Se ha obtenido una Alma de Stand");
             } else mostrarAlertaPersonalizada("No cuenta con 3 monedas para obtener 1 de Alma de Stand(cuero)");
@@ -232,7 +229,8 @@ document.addEventListener("DOMContentLoaded",() =>{
                 jugador.moneda -= 1; //Le quito al jugador 3 monedas
                 contadorMonedas.textContent = jugador.moneda; //Actualizo la cantidad de monedas
                 jugador.piedra++; //Le agrego la piedra obtenido
-                animacionSumar(recursos[0], 40, 240, "+1");//Que se vea la animación sumar en piedra
+                let tam = tamanioCaja(recursos[0]);//Sacando el tamaño en la caja
+                animacionSumar(recursos[0], tam.width, tam.heigth, "+1");//Que se vea la animación sumar en piedra
                 recursos[0].textContent = "Piedra Estelar: " + jugador.piedra; //Muestro la piedra en pantalla
                 mostrarAlertaPersonalizada("Se ha obtenido 1 Piedra Estelar");
             } else mostrarAlertaPersonalizada("No cuenta con 1 moneda para obtener 1 de Piedra Estelar");
@@ -248,7 +246,8 @@ document.addEventListener("DOMContentLoaded",() =>{
                 contadorMonedas.textContent = jugador.moneda; //Actualizo la cantidad de monedas
                 jugador.madera++; //Le agrego la madera obtenido
                 recursos[1].textContent = "Madera de la Familia Joestar: " + jugador.madera; //Muestro la madera en pantalla
-                animacionSumar(recursos[1], 120, 240, "+1");//Que se vea la animación sumar en madera
+                let tam = tamanioCaja(recursos[1]);//Sacando el tamaño en la caja
+                animacionSumar(recursos[1], tam.width, tam.heigth, "+1");//Que se vea la animación sumar en madera
                 mostrarAlertaPersonalizada("Se ha obtenido 1 Madera de la Familia Joestar");
             } else mostrarAlertaPersonalizada("No cuenta con 1 moneda para obtener 1 de Madera de la Familia Joestar");
         } else mostrarAlertaPersonalizada("Regrese pronto");
@@ -263,7 +262,8 @@ document.addEventListener("DOMContentLoaded",() =>{
                 contadorMonedas.textContent = jugador.moneda; //Actualizo la cantidad de monedas
                 jugador.pan++; //Le agrego la madera obtenido
                 recursos[6].textContent = "Pan de los Joestar: " + jugador.pan; //Actualizo los caballos en pantalla
-                animacionSumar(recursos[6], 460, 240, "+1");//Que se vea la animación sumar en madera
+                let tam = tamanioCaja(recursos[6]);//Sacando el tamaño en la caja
+                animacionSumar(recursos[6], tam.width, tam.heigth, "+1");//Que se vea la animación sumar en madera
                 mostrarAlertaPersonalizada("Se ha obtenido un pan de los Joestar");
             } else mostrarAlertaPersonalizada("No cuenta con 15 monedas para obtener 1 de pan");
         } else mostrarAlertaPersonalizada("Regrese pronto");
@@ -303,7 +303,8 @@ document.addEventListener("DOMContentLoaded",() =>{
             recursos[4].textContent = " Alma de Stand: " + jugador.cuero; //Actualizo el cuero en pantalla
             mostrarAlertaPersonalizada("Se ha obtenido un Caballo");
             jugador.caballos++;
-            animacionSumar(recursos[5], 390, 240, "+1");//Que se vea la animación sumar en piedra
+            let tam = tamanioCaja(recursos[5]);//Sacando el tamaño en la caja
+            animacionSumar(recursos[5], tam.width, tam.heigth, "+1");//Que se vea la animación sumar en piedra
             recursos[5].textContent = "Caballos de Hol Horse: " + jugador.caballos; //Actualizo los caballos en pantalla
         }else mostrarAlertaPersonalizada("Se necesitan 2 de Alma de Stand y 10 trigos para obtener un caballo");
     }, false);
@@ -342,7 +343,8 @@ document.addEventListener("DOMContentLoaded",() =>{
             //Restando y sumando los valores al amasar el pan
             jugador.trigo -= 2;
             jugador.pan++;
-            animacionSumar(recursos[6], 460, 240, "+1");//Que se vea la animación sumar en madera
+            let tam = tamanioCaja(recursos[56]);//Sacando el tamaño en la caja
+            animacionSumar(recursos[6], tam.width, tam.heigth, "+1");//Que se vea la animación sumar en madera
             //Actualizando los recursos
             recursos[3].textContent = "Trigo de los Joestar: " + jugador.trigo; //Actualizo la madera en pantalla
             recursos[6].textContent = "Pan de los Joestar: " + jugador.pan; //Actualizo los caballos en pantalla
@@ -418,5 +420,13 @@ document.addEventListener("DOMContentLoaded",() =>{
         setTimeout(() => {
             elemento.parentElement.removeChild(p);
         }, 2000); //Duración de la animación
+    }
+
+    //Función que devuelve el ancho y largo de cada elemento para utilizarla en posición donde de haga la animación de sumar
+    function tamanioCaja(elemento){
+        let estilo = window.getComputedStyle(elemento);
+        let width = estilo.getPropertyValue("width");
+        let heigth = estilo.getPropertyValue("heigth");
+        return {width, heigth};
     }
 });
