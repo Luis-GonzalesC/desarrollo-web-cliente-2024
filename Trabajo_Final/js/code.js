@@ -84,7 +84,6 @@ document.addEventListener("DOMContentLoaded",() =>{
 
             //Bloqueando el Almacen
             array_eficios[1].disabled = true;
-
             mostrarAlertaPersonalizada("¡Has construido un Almacén!");
             mostrarAlertaPersonalizada("Están disponibles 3 nuevos edificios");
 
@@ -105,8 +104,19 @@ document.addEventListener("DOMContentLoaded",() =>{
         jugador.piedra += piedra_random;
         jugador.madera += madera_random;
         mostrarAlertaPersonalizada(`Obtuviste ${piedra_random} de piedra y ${madera_random} de madera`);
-        animacionSumar(recursos[0], 40, 240, "+"+piedra_random);//Que se vea la animación sumar en piedra
-        animacionSumar(recursos[1], 120, 240, "+"+madera_random);//Que se vea la animación sumar en madera
+
+        //SOLUCIONAR ESTOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+        let estilo1 = window.getComputedStyle(recursos[0]);
+        let width1 = estilo1.getPropertyValue("width");
+        let heigth1 = estilo1.getPropertyValue("heigth");
+
+        let estilo2 = window.getComputedStyle(recursos[1]);
+        let width2 = estilo2.getPropertyValue("width");
+        let heigth2 = estilo2.getPropertyValue("heigth");
+
+
+        animacionSumar(recursos[0], width1, heigth1, "+"+piedra_random);//Que se vea la animación sumar en piedra
+        animacionSumar(recursos[1], width2, heigth2, "+"+madera_random);//Que se vea la animación sumar en madera
         recursos[0].textContent = "Piedra Estelar: " + jugador.piedra;
         recursos[1].textContent = "Madera de la Familia Joestar: " + jugador.madera;
         setTimeout(() => {//Ejecuta la función luego del tiempo indicado
@@ -370,15 +380,15 @@ document.addEventListener("DOMContentLoaded",() =>{
     
         // Evento para cerrar el alert y el fondo negro
         botonCerrar.addEventListener("click", () => {
-            document.body.removeChild(alerta); // Elimina la alerta
-            document.body.removeChild(fondo); // Elimina el fondo negro
+            document.body.removeChild(alerta); //Elimina la alerta
+            document.body.removeChild(fondo); //Elimina el fondo negro
         });
-    
+        //Agrega al body
         alerta.appendChild(botonCerrar);
-        document.body.appendChild(fondo); // Agregar el fondo negro
-        document.body.appendChild(alerta); // Agregar la alerta
+        document.body.appendChild(fondo); //Agregar el fondo negro
+        document.body.appendChild(alerta); //Agregar la alerta
     }
-
+    //Función que activa un panel
     function abrirPaneles(clase){
         let panel = document.getElementsByClassName(clase)[0];
         panel.setAttribute("style", "display: block");
