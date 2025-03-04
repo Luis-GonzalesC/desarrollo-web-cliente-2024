@@ -298,7 +298,7 @@ body{
     padding: 20px;
     background-color: #f8d7da;
     color: #721c24;
-    border: 1px solid #f5c6cb;
+    border: 1px solid #f3c8cc;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     z-index: 1000;
@@ -309,6 +309,9 @@ body{
 }
 
 .cerrarBtn{
+    display: flex;
+    text-align: center;
+    margin-left: 90px;
     margin-top: 10px;
     padding: 5px 10px;
     border: none;

@@ -85,10 +85,10 @@ document.addEventListener("DOMContentLoaded",() =>{
             //Bloqueando el Almacen
             array_eficios[1].disabled = true;
 
-            alert("¡Has construido un Almacén!");
-            alert("Están disponibles 3 nuevos edificios");
+            mostrarAlertaPersonalizada("¡Has construido un Almacén!");
+            mostrarAlertaPersonalizada("Están disponibles 3 nuevos edificios");
 
-        } else alert("No tienes suficientes monedas para comprar El santuario de los Stand.");
+        } else mostrarAlertaPersonalizada("No tienes suficientes monedas para comprar El santuario de los Stand.");
     }, false);
 
     //Funcionalidad del boton de recoger
@@ -104,8 +104,9 @@ document.addEventListener("DOMContentLoaded",() =>{
         let madera_random = Math.floor(Math.random() * (jugador.trabajadores + 2) + 1);
         jugador.piedra += piedra_random;
         jugador.madera += madera_random;
-        alert(`Obtuviste ${piedra_random} de piedra y ${madera_random} de madera`);
-        
+        mostrarAlertaPersonalizada(`Obtuviste ${piedra_random} de piedra y ${madera_random} de madera`);
+        animacionSumar(recursos[0], 40, 240, "+"+piedra_random);//Que se vea la animación sumar en piedra
+        animacionSumar(recursos[1], 120, 240, "+"+madera_random);//Que se vea la animación sumar en madera
         recursos[0].textContent = "Piedra Estelar: " + jugador.piedra;
         recursos[1].textContent = "Madera de la Familia Joestar: " + jugador.madera;
         setTimeout(() => {//Ejecuta la función luego del tiempo indicado
@@ -133,12 +134,14 @@ document.addEventListener("DOMContentLoaded",() =>{
             contadorMonedas.textContent = jugador.moneda; //Actualizo la cantidad de monedas
             recursos[0].textContent = "Piedra Estelar: " + jugador.piedra; //Actualizo la cantidad de piedras
             recursos[2].textContent = "Usuarios de Stand: " + jugador.trabajadores;
+            animacionSumar(recursos[2], 160, 240, "+5");//Que se vea la animación sumar en los trabajadores
+
             //Se incrementa su coste en 5 luego de crear una cabaña
             min_monedas += 5;
             min_piedras += 5;
-            alert("Acabas de contruir una cabaña");
-            alert("Se acaban de agregar 5 trabajadores");
-        } else alert(`Como mínimo se necesitan ${min_monedas} monedas y ${min_piedras} piedras`);
+            mostrarAlertaPersonalizada("Acabas de contruir una cabaña");
+            mostrarAlertaPersonalizada("Se acaban de agregar 5 trabajadores");
+        } else mostrarAlertaPersonalizada(`Como mínimo se necesitan ${min_monedas} monedas y ${min_piedras} piedras`);
     }, false)
 
     /*==========================EDIFICIO DE LA GRANJA==========================*/
@@ -156,14 +159,15 @@ document.addEventListener("DOMContentLoaded",() =>{
 
             array_eficios[5].disabled = false;
             array_eficios[3].disabled = true;
-            alert("Se ha desbloqueado un nuevo edificio, Los Establos de Hold Horse");
+            mostrarAlertaPersonalizada("Ahora conseguiras Trigo cada 20 segundos");
+            mostrarAlertaPersonalizada("Se ha desbloqueado un nuevo edificio, Los Establos de Hold Horse");
 
             timer = setInterval(() => {
                 jugador.trigo += 1;
                 recursos[3].textContent = "Trigo de los Joestar: " + jugador.trigo;
-                animacionSumar(recursos[3], 250, 300);
+                animacionSumar(recursos[3], 250, 300, "+1");
             }, /*20000*/ 2000);
-        } else alert("Se necesitan 8 monedas, 9 piedras y 5 de madera para poder construir la granja");
+        } else mostrarAlertaPersonalizada("Se necesitan 8 monedas, 9 piedras y 5 de madera para poder construir la granja");
     }, false)
 
     
@@ -181,9 +185,9 @@ document.addEventListener("DOMContentLoaded",() =>{
             recursos[0].textContent = "Piedra Estelar: " + jugador.piedra; //Muestro la pieda en pantalla
             recursos[1].textContent = "Madera de la Familia Joestar: " + jugador.madera; //Muestro la madera en pantalla
             array_eficios[4].disabled = true;
-            alert("Se ha construido el Mercado");
+            mostrarAlertaPersonalizada("Se ha construido el Mercado");
             boton_mercado.setAttribute("style", "display: block");
-        }else alert("Se necesitan 8 piedras y 9 de madera para poder construir el Mercado");
+        }else mostrarAlertaPersonalizada("Se necesitan 8 piedras y 9 de madera para poder construir el Mercado");
     }, false)
 
     boton_mercado.addEventListener("click", ()=>{
@@ -194,7 +198,7 @@ document.addEventListener("DOMContentLoaded",() =>{
     //LLamo a mi función para cerrar el panel de los edicios
     cerrarPaneles(cerrar_panel[1], "panel_mercado");
 
-    //Comprando CUERO en el mercado
+    //Comprando CUERO(Alma de Stand) en el mercado
     panel_mercado[1].addEventListener("click", ()=>{
         let respuesta = confirm("Comprar Alma de Stand(cuero) vale 3 monedas. ¿Esta segur@?");
         if(respuesta){
@@ -202,10 +206,11 @@ document.addEventListener("DOMContentLoaded",() =>{
                 jugador.moneda -= 3; //Le quito al jugador 3 monedas
                 contadorMonedas.textContent = jugador.moneda; //Actualizo la cantidad de monedas
                 jugador.cuero++; //Le agrego el cuero obtenido
+                animacionSumar(recursos[4], 350, 300, "+1");//Que se vea la animación sumar en los trabajadores
                 recursos[4].textContent = " Alma de Stand: " + jugador.cuero; //Muestro el cuero en pantalla
-                alert("Se ha obtenido una Alma de Stand");
-            } else alert("No cuenta con 3 monedas para obtener 1 de Alma de Stand(cuero)");
-        } else alert("Regrese pronto");
+                mostrarAlertaPersonalizada("Se ha obtenido una Alma de Stand");
+            } else mostrarAlertaPersonalizada("No cuenta con 3 monedas para obtener 1 de Alma de Stand(cuero)");
+        } else mostrarAlertaPersonalizada("Regrese pronto");
         
     }, false);
 
@@ -217,10 +222,11 @@ document.addEventListener("DOMContentLoaded",() =>{
                 jugador.moneda -= 1; //Le quito al jugador 3 monedas
                 contadorMonedas.textContent = jugador.moneda; //Actualizo la cantidad de monedas
                 jugador.piedra++; //Le agrego la piedra obtenido
+                animacionSumar(recursos[0], 40, 240, "+1");//Que se vea la animación sumar en piedra
                 recursos[0].textContent = "Piedra Estelar: " + jugador.piedra; //Muestro la piedra en pantalla
-                alert("Se ha obtenido 1 Piedra Estelar");
-            } else alert("No cuenta con 1 moneda para obtener 1 de Piedra Estelar");
-        } else alert("Regrese pronto");
+                mostrarAlertaPersonalizada("Se ha obtenido 1 Piedra Estelar");
+            } else mostrarAlertaPersonalizada("No cuenta con 1 moneda para obtener 1 de Piedra Estelar");
+        } else mostrarAlertaPersonalizada("Regrese pronto");
     }, false);
 
     //Comprando MADERA en el mercado
@@ -232,9 +238,10 @@ document.addEventListener("DOMContentLoaded",() =>{
                 contadorMonedas.textContent = jugador.moneda; //Actualizo la cantidad de monedas
                 jugador.madera++; //Le agrego la madera obtenido
                 recursos[1].textContent = "Madera de la Familia Joestar: " + jugador.madera; //Muestro la madera en pantalla
-                alert("Se ha obtenido 1 Madera de la Familia Joestar");
-            } else alert("No cuenta con 1 moneda para obtener 1 de Madera de la Familia Joestar");
-        } else alert("Regrese pronto");
+                animacionSumar(recursos[1], 120, 240, "+1");//Que se vea la animación sumar en madera
+                mostrarAlertaPersonalizada("Se ha obtenido 1 Madera de la Familia Joestar");
+            } else mostrarAlertaPersonalizada("No cuenta con 1 moneda para obtener 1 de Madera de la Familia Joestar");
+        } else mostrarAlertaPersonalizada("Regrese pronto");
     }, false);
 
     //Comprando PAN en el mercado
@@ -246,9 +253,10 @@ document.addEventListener("DOMContentLoaded",() =>{
                 contadorMonedas.textContent = jugador.moneda; //Actualizo la cantidad de monedas
                 jugador.pan++; //Le agrego la madera obtenido
                 recursos[6].textContent = "Pan de los Joestar: " + jugador.pan; //Actualizo los caballos en pantalla
-                alert("Se ha obtenido un pan de los Joestar");
-            } else alert("No cuenta con 15 monedas para obtener 1 de pan");
-        } else alert("Regrese pronto");
+                animacionSumar(recursos[6], 460, 240, "+1");//Que se vea la animación sumar en madera
+                mostrarAlertaPersonalizada("Se ha obtenido un pan de los Joestar");
+            } else mostrarAlertaPersonalizada("No cuenta con 15 monedas para obtener 1 de pan");
+        } else mostrarAlertaPersonalizada("Regrese pronto");
     }, false);
     /*========================================================================*/
 
@@ -269,8 +277,8 @@ document.addEventListener("DOMContentLoaded",() =>{
             boton_criarCaballos.setAttribute("style", "display: block");//Mostrando el boton al crear los establos
             array_eficios[5].disabled = true;//Desactivando el edificio del establo
             array_eficios[6].disabled = false;//Activando el nuevo edificio (MOLINO)
-            alert("Se ha desbloqueado un nuevo edicio (El molino de la Fuerza)");
-        }else alert("Como mínimo se necesitan 8 monedas, 10 de madera y 5 de trigo");
+            mostrarAlertaPersonalizada("Se ha desbloqueado un nuevo edicio (El molino de la Fuerza)");
+        }else mostrarAlertaPersonalizada("Como mínimo se necesitan 8 monedas, 10 de madera y 5 de trigo");
         
     }, false);
 
@@ -283,10 +291,11 @@ document.addEventListener("DOMContentLoaded",() =>{
             //Actualizando los valores en pantalla
             recursos[3].textContent = "Trigo de los Joestar: " + jugador.trigo; //Actualizo la madera en pantalla
             recursos[4].textContent = " Alma de Stand: " + jugador.cuero; //Actualizo el cuero en pantalla
-            alert("Se ha obtenido un Caballo");
+            mostrarAlertaPersonalizada("Se ha obtenido un Caballo");
             jugador.caballos++;
+            animacionSumar(recursos[5], 390, 240, "+1");//Que se vea la animación sumar en piedra
             recursos[5].textContent = "Caballos de Hol Horse: " + jugador.caballos; //Actualizo los caballos en pantalla
-        }else alert("Se necesitan 2 de Alma de Stand y 10 trigos para obtener un caballo");
+        }else mostrarAlertaPersonalizada("Se necesitan 2 de Alma de Stand y 10 trigos para obtener un caballo");
     }, false);
     /*========================================================================*/
 
@@ -308,13 +317,13 @@ document.addEventListener("DOMContentLoaded",() =>{
             //Desactivando los edificios
             array_eficios[6].disabled = true;
             //Habilitando la taberna
-            alert("Se ha habilitado un último edificio, El salón de los Stand(Taberna)");
+            mostrarAlertaPersonalizada("Se ha habilitado un último edificio, El salón de los Stand(Taberna)");
             //Habilitando el Amasar pan
             boton_amasarPan.setAttribute("style", "display:block");
             array_eficios[7].disabled = false;
             document.querySelector("#mercado_pan").setAttribute("style", "display:block");
-            alert("Hay un nuevo recurso a comprar en el mercado");
-        }else alert("Se necesitan 5 monedas, 8 piedras y 3 caballos para poder comprar el Molino");
+            mostrarAlertaPersonalizada("Hay un nuevo recurso a comprar en el mercado");
+        }else mostrarAlertaPersonalizada("Se necesitan 5 monedas, 8 piedras y 3 caballos para poder comprar el Molino");
     }, false);
 
     //Evento para poder amasar el pan => (costo: 2 de trigo y min 10 trabajadores)
@@ -323,43 +332,40 @@ document.addEventListener("DOMContentLoaded",() =>{
             //Restando y sumando los valores al amasar el pan
             jugador.trigo -= 2;
             jugador.pan++;
+            animacionSumar(recursos[6], 460, 240, "+1");//Que se vea la animación sumar en madera
             //Actualizando los recursos
             recursos[3].textContent = "Trigo de los Joestar: " + jugador.trigo; //Actualizo la madera en pantalla
             recursos[6].textContent = "Pan de los Joestar: " + jugador.pan; //Actualizo los caballos en pantalla
-            alert("Se ha obtenido un pan de los Joestar");
-        }else alert("Para obtener una unidad de pan son necesarias 2 de trigo y 10 trabajadores");
+            mostrarAlertaPersonalizada("Se ha obtenido un pan de los Joestar");
+        }else mostrarAlertaPersonalizada("Para obtener una unidad de pan son necesarias 2 de trigo y 10 trabajadores");
         
     }, false);
     /*========================================================================*/
 
     /*========================EDIFICIO DE LA TABERNA========================*/
     //Evento para la taberna => El salón de los Stand (costo: 10 monedas, 7 de madera, 9 de piedra, 3 caballos y 10 de pan)
-    /*array_eficios[7].addEventListener("click", ()=>{
-        if(jugador.moneda >= 10 && jugador.madera >= 7 && jugador.piedra >= 9 && jugador.caballos >= 3 && jugador.pan >= 10){
-
-        }
-    }, false);*/
-
     array_eficios[7].addEventListener("click", () => {
         if(jugador.moneda >= 10 && jugador.madera >= 7 && jugador.piedra >= 9 && jugador.caballos >= 3 && jugador.pan >= 10){
             mostrarAlertaPersonalizada("¡Felicidades! El juego ha terminado y has ganado");
-        }
+            location.reload();
+        }else mostrarAlertaPersonalizada("Para construir la El salón de los Stand(taberna) es necesario 10 monedas, 7 de madera, 9 de piedra, 3 caballos y 10 de pan");
     }, false);
-    
+
+    //==============TODAS LAS FUNCIONES NECESARIAS PARA LA CORRECTA EJECUCIÓN DEL CÓDIGO==============\\
     // Función para crear el alert personalizado con fondo negro
     function mostrarAlertaPersonalizada(mensaje) {
-        // Crear un fondo negro
+        //Creo un fondo negro
         let fondo = document.createElement("div");
         fondo.setAttribute("class", "fondo");
     
-        // Crear contenedor del alert
+        //Creo un div del alert
         let alerta = document.createElement("div");
         alerta.setAttribute("class", "alerta");
-        alerta.textContent = mensaje;
+        alerta.appendChild(document.createTextNode(mensaje));
     
-        // Botón para cerrar el alert
-        const botonCerrar = document.createElement("button");
-        botonCerrar.textContent = "Cerrar";
+        //Boton para cerrar el alert
+        let botonCerrar = document.createElement("button");
+        botonCerrar.appendChild(document.createTextNode("Cerrar"));
         botonCerrar.setAttribute("class", "cerrarBtn");
     
         // Evento para cerrar el alert y el fondo negro
@@ -373,7 +379,6 @@ document.addEventListener("DOMContentLoaded",() =>{
         document.body.appendChild(alerta); // Agregar la alerta
     }
 
-    //==============TODAS LAS FUNCIONES NECESARIAS PARA LA CORRECTA EJECUCIÓN DEL CÓDIGO==============\\
     function abrirPaneles(clase){
         let panel = document.getElementsByClassName(clase)[0];
         panel.setAttribute("style", "display: block");
@@ -388,9 +393,9 @@ document.addEventListener("DOMContentLoaded",() =>{
     }
 
     // Función para manejar la animación
-    function animacionSumar(elemento, top, left) {
+    function animacionSumar(elemento, top, left, mensaje) {
         let p = document.createElement("p"); //Creación del elemento p
-        p.appendChild(document.createTextNode("+1"));
+        p.appendChild(document.createTextNode(mensaje));
         p.setAttribute("class", "sumar"); //Asignar clase
         p.setAttribute("style", `
             top: ${top}px; 
