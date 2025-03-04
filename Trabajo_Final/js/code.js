@@ -341,21 +341,8 @@ document.addEventListener("DOMContentLoaded",() =>{
     }, false);*/
 
     array_eficios[7].addEventListener("click", () => {
-        if (
-            jugador.moneda >= 10 &&
-            jugador.madera >= 7 &&
-            jugador.piedra >= 9 &&
-            jugador.caballos >= 3 &&
-            jugador.pan >= 10
-        ) {
-            mostrarAlertaPersonalizada("¡Felicidades! El juego ha terminado y has ganado 🎉");
-        }
-    }, false);
-    
-    // Función para crear el alert personalizado con fondo negro
-    array_eficios[7].addEventListener("click", () => {
-        if (jugador.moneda >= 10 && jugador.madera >= 7 && jugador.piedra >= 9 && jugador.caballos >= 3 && jugador.pan >= 10) {
-            mostrarAlertaPersonalizada("¡Felicidades! El juego ha terminado y has ganado 🎉");
+        if(jugador.moneda >= 10 && jugador.madera >= 7 && jugador.piedra >= 9 && jugador.caballos >= 3 && jugador.pan >= 10){
+            mostrarAlertaPersonalizada("¡Felicidades! El juego ha terminado y has ganado");
         }
     }, false);
     
