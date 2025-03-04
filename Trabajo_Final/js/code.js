@@ -343,7 +343,7 @@ document.addEventListener("DOMContentLoaded",() =>{
             //Restando y sumando los valores al amasar el pan
             jugador.trigo -= 2;
             jugador.pan++;
-            let tam = tamanioCaja(recursos[56]);//Sacando el tamaño en la caja
+            let tam = tamanioCaja(recursos[6]);//Sacando el tamaño en la caja
             animacionSumar(recursos[6], tam.width, tam.heigth, "+1");//Que se vea la animación sumar en madera
             //Actualizando los recursos
             recursos[3].textContent = "Trigo de los Joestar: " + jugador.trigo; //Actualizo la madera en pantalla
