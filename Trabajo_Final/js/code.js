@@ -447,9 +447,9 @@ document.addEventListener("DOMContentLoaded",() =>{
         return {width, heigth};
     }
     //Función donde se crea un sonido
-    function PonerSonido(ruta, sonido){
+    function PonerSonido(ruta, vol){
         let sonido = new Audio(ruta);
-        sonido.volume = sonido;
+        sonido.volume = vol;
         sonido.play();
     }
 });
