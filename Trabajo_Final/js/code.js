@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded",() =>{
             jugador.moneda++;//Sumandole a la moneda del jugador
             contadorMonedas.textContent = jugador.moneda;//Agregando texto
             if(jugador.moneda >= 2) edificio.setAttribute("style", "display: block");
-            PonerSonido("audio/ora.mp3");
+            PonerSonido("audio/ora.mp3", 0.5);
             //Eliminando el elemento p luego de la animación
             setTimeout(() => {
                 boton_iniciado.parentElement.removeChild(p); 
@@ -377,7 +377,7 @@ document.addEventListener("DOMContentLoaded",() =>{
     array_eficios[7].addEventListener("click", () => {
         if(jugador.moneda >= 10 && jugador.madera >= 7 && jugador.piedra >= 9 && jugador.caballos >= 3 && jugador.pan >= 10){
             mostrarAlertaPersonalizada("¡Felicidades! El juego ha terminado y has ganado. La página se recargará en 3 segundos");
-            PonerSonido("audio/despedida.mp3");
+            PonerSonido("audio/despedida.mp3", 1);
             setTimeout(() => {
                 location.reload();
             }, 3000);//3 segundos en reiniciar
@@ -447,9 +447,9 @@ document.addEventListener("DOMContentLoaded",() =>{
         return {width, heigth};
     }
     //Función donde se crea un sonido
-    function PonerSonido(ruta){
+    function PonerSonido(ruta, sonido){
         let sonido = new Audio(ruta);
-        sonido.volume = 1;
+        sonido.volume = sonido;
         sonido.play();
     }
 });
