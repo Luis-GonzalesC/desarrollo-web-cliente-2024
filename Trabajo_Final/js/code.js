@@ -39,6 +39,7 @@ document.addEventListener("DOMContentLoaded",() =>{
         "audio/cancion3.mp3",
         "audio/cancion4.mp3",
         "audio/cancion5.mp3",
+        "audio/cancion6.mp3",
     ];
 
     let indiceCancion = 0;
@@ -71,7 +72,7 @@ document.addEventListener("DOMContentLoaded",() =>{
             jugador.moneda++;//Sumandole a la moneda del jugador
             contadorMonedas.textContent = jugador.moneda;//Agregando texto
             if(jugador.moneda >= 2) edificio.setAttribute("style", "display: block");
-            PonerSonido("audio/ora.mp3", 0.5);
+            PonerSonido("audio/ora.mp3", 0.3);
             //Eliminando el elemento p luego de la animación
             setTimeout(() => {
                 boton_iniciado.parentElement.removeChild(p); 
