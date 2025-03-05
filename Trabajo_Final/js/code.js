@@ -138,7 +138,7 @@ document.addEventListener("DOMContentLoaded",() =>{
             //Vuelvo a poner el boton en su forma original
             boton_recoger.id = "btn_recoger"; //Vuelvo a reasignar la misma clase
             boton_recoger.setAttribute("style", "display: block"); //Vuelvo a poner la clase en block
-        }, /*(45 - jugador.trabajadores) **/ 1000);
+        }, (45 - jugador.trabajadores) * 1000);
     }, false)
 
     /*==========================EDIFICIO DE LA CABAÑA==========================*/
@@ -192,7 +192,7 @@ document.addEventListener("DOMContentLoaded",() =>{
                 recursos[3].textContent = "Trigo de los Joestar: " + jugador.trigo;
                 let tam = tamanioCaja(recursos[3]);//Sacando el tamaño en la caja
                 animacionSumar(recursos[3], tam.width, tam.heigth, "+1");
-            }, /*20000*/ 3000);
+            }, 20000);
         } else mostrarAlertaPersonalizada("Se necesitan 8 monedas, 9 piedras y 5 de madera para poder construir la granja");
     }, false)
     
