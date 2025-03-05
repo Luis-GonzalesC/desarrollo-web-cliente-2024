@@ -195,7 +195,6 @@ document.addEventListener("DOMContentLoaded",() =>{
             }, /*20000*/ 3000);
         } else mostrarAlertaPersonalizada("Se necesitan 8 monedas, 9 piedras y 5 de madera para poder construir la granja");
     }, false)
-
     
     /*==========================EDIFICIO DEL MERCADO==========================*/
     //Evento para el Mercado => Mercado de las Sombras (costo: 8 de piedra y 9 de madera)
@@ -376,13 +375,13 @@ document.addEventListener("DOMContentLoaded",() =>{
     /*========================EDIFICIO DE LA TABERNA========================*/
     //Evento para la taberna => El salón de los Stand (costo: 10 monedas, 7 de madera, 9 de piedra, 3 caballos y 10 de pan)
     array_eficios[7].addEventListener("click", () => {
-        //if(jugador.moneda >= 10 && jugador.madera >= 7 && jugador.piedra >= 9 && jugador.caballos >= 3 && jugador.pan >= 10){
+        if(jugador.moneda >= 10 && jugador.madera >= 7 && jugador.piedra >= 9 && jugador.caballos >= 3 && jugador.pan >= 10){
             mostrarAlertaPersonalizada("¡Felicidades! El juego ha terminado y has ganado. La página se recargará en 3 segundos");
             PonerSonido("audio/despedida.mp3");
             setTimeout(() => {
                 location.reload();
             }, 3000);//3 segundos en reiniciar
-        //}else mostrarAlertaPersonalizada("Para construir la El salón de los Stand(taberna) es necesario 10 monedas, 7 de madera, 9 de piedra, 3 caballos y 10 de pan");
+        }else mostrarAlertaPersonalizada("Para construir la El salón de los Stand(taberna) es necesario 10 monedas, 7 de madera, 9 de piedra, 3 caballos y 10 de pan");
     }, false);
 
     //==============TODAS LAS FUNCIONES NECESARIAS PARA LA CORRECTA EJECUCIÓN DEL CÓDIGO==============\\
